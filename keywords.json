@@ -1,0 +1,44 @@
+{
+  "_instrucciones": "Edita este archivo directamente en GitHub para agregar o quitar keywords. Los cambios aplican al próximo escaneo automático.",
+  "_categorias": {
+    "alta_prioridad": "Activan alerta inmediata — leyes específicas y unidades nombradas",
+    "instituciones": "Organismos públicos relacionados con seguridad",
+    "materias": "Conceptos temáticos y terminología de seguridad"
+  },
+  "alta_prioridad": [
+    "21.659",
+    "21659",
+    "21.802",
+    "21802",
+    "Ley de Seguridad Privada",
+    "Ley de Seguridad Municipal",
+    "División de Seguridad Privada",
+    "Subsecretaría de Prevención del Delito"
+  ],
+  "instituciones": [
+    "Ministerio de Seguridad Pública",
+    "Ministerio del Interior y Seguridad Pública",
+    "Carabineros de Chile",
+    "Policía de Investigaciones",
+    "DIRECTEMAR",
+    "DGAC",
+    "ABIF",
+    "CMF"
+  ],
+  "materias": [
+    "seguridad privada",
+    "seguridad pública",
+    "seguridad municipal",
+    "guardia de seguridad",
+    "empresa de seguridad",
+    "vigilancia privada",
+    "inspector municipal de seguridad",
+    "dispositivos de impulso eléctrico",
+    "acreditación de seguridad",
+    "licencia de seguridad",
+    "entidad obligada",
+    "registro de seguridad",
+    "armas de fuego",
+    "fiscalización"
+  ]
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor Diario Oficial — DSP</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:   #0d2340;
+      --navy2:  #163256;
+      --accent: #c0392b;
+      --gold:   #e8a020;
+      --bg:     #f2f4f8;
+      --card:   #ffffff;
+      --border: #dde2ea;
+      --text:   #1a2638;
+      --muted:  #6b7a91;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'IBM Plex Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── Header ── */
+    header {
+      background: var(--navy); padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--gold);
+    }
+    .header-brand { padding: 18px 0; }
+    .header-brand .sup {
+      font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--gold);
+      text-transform: uppercase; display: block; margin-bottom: 5px;
+    }
+    .header-brand h1 { font-size: 17px; font-weight: 700; color: #fff; }
+    .header-brand p  { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+    .header-meta { font-size: 12px; color: rgba(255,255,255,0.4); text-align: right; }
+    #last-update { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--navy2); padding: 0 40px;
+      display: flex; gap: 4px;
+    }
+    nav button {
+      background: none; border: none; cursor: pointer;
+      padding: 12px 16px; font-size: 13px; color: rgba(255,255,255,0.55);
+      border-bottom: 3px solid transparent; transition: all 0.15s;
+      font-family: inherit;
+    }
+    nav button:hover { color: #fff; }
+    nav button.active { color: #fff; border-bottom-color: var(--gold); }
+
+    /* ── Layout ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 28px 40px; }
+
+    /* ── Stat cards ── */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .stat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .stat .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+    .stat .value { font-size: 30px; font-weight: 700; color: var(--navy); margin-top: 4px; }
+    .stat.alta .value { color: var(--accent); }
+    .stat .icon { font-size: 26px; opacity: 0.1; }
+
+    /* ── Filtros ── */
+    .filters {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 20px; margin-bottom: 16px;
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    }
+    .filters label { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+    .filters select, .filters input {
+      border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px;
+      font-size: 13px; color: var(--text); background: var(--bg);
+      font-family: inherit; outline: none;
+    }
+    .filters select:focus, .filters input:focus { border-color: var(--navy); }
+    .btn-clear {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      padding: 6px 14px; font-size: 12px; color: var(--muted); cursor: pointer;
+      font-family: inherit; transition: all 0.15s;
+    }
+    .btn-clear:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ── Tabla ── */
+    .table-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .table-header {
+      background: var(--navy); color: #fff; padding: 12px 20px;
+      font-size: 12px; font-weight: 600; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: var(--muted);
+      padding: 10px 12px; border-bottom: 2px solid var(--border);
+      text-align: left; white-space: nowrap;
+    }
+    td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f8f9fc; }
+    .title-cell { max-width: 340px; }
+    .title-text { font-size: 12.5px; line-height: 1.4; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block; border-radius: 12px; padding: 2px 9px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3px;
+    }
+    .badge-alta   { background: #fdf0ef; color: var(--accent); border: 1px solid #f5c6c2; }
+    .badge-normal { background: #eef3fb; color: #1a6ab1; border: 1px solid #c5d7f0; }
+    .kw-chip {
+      display: inline-block; background: #eef4ff; color: #2563eb;
+      border: 1px solid #bfdbfe; border-radius: 4px;
+      padding: 1px 6px; font-size: 10.5px; margin: 1px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .section-chip {
+      display: inline-block; background: #f1f3f7; color: var(--muted);
+      border-radius: 4px; padding: 2px 7px; font-size: 10px;
+    }
+    .pdf-link {
+      color: var(--accent); text-decoration: none; font-size: 12px;
+      font-weight: 700; white-space: nowrap;
+    }
+    .pdf-link:hover { text-decoration: underline; }
+    .date-cell { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+    /* ── Paginación ── */
+    .pagination {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 20px; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+    }
+    .pag-btn {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      padding: 5px 14px; font-size: 12px; color: var(--text); cursor: pointer;
+      font-family: inherit; transition: all 0.15s;
+    }
+    .pag-btn:hover:not(:disabled) { border-color: var(--navy); }
+    .pag-btn:disabled { opacity: 0.3; cursor: default; }
+
+    /* ── Estados ── */
+    .empty { text-align: center; padding: 48px; color: var(--muted); }
+    .empty .icon { font-size: 36px; opacity: 0.3; display: block; margin-bottom: 10px; }
+    .loading { display: flex; align-items: center; gap: 10px; padding: 32px 20px; color: var(--muted); font-size: 14px; }
+    .spinner {
+      width: 18px; height: 18px; border: 2px solid var(--border);
+      border-top-color: var(--navy); border-radius: 50%; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Sección keywords (tab) ── */
+    #tab-keywords { display: none; }
+    .kw-section { margin-bottom: 20px; }
+    .kw-section-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .kw-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .kw-item {
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    }
+    .kw-item.alta_prioridad { background: #fdf0ef; color: var(--accent); border: 1px solid #f5c6c2; }
+    .kw-item.instituciones  { background: #f0f4ff; color: #2563eb; border: 1px solid #bfdbfe; }
+    .kw-item.materias       { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .kw-edit-note {
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
+      padding: 12px 16px; font-size: 13px; color: #92400e; margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 16px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      header { padding: 0 16px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-brand">
+    <span class="sup">Subsecretaría de Prevención del Delito</span>
+    <h1>Monitor Diario Oficial</h1>
+    <p>División de Seguridad Privada — Alertas de Seguridad</p>
+  </div>
+  <div class="header-meta">
+    Última actualización<br>
+    <span id="last-update">cargando…</span>
+  </div>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab('publicaciones', this)">📋 Publicaciones</button>
+  <button onclick="showTab('keywords', this)">🏷️ Keywords activas</button>
+</nav>
+
+<div class="container">
+
+  <!-- ── STATS ── -->
+  <div class="stats" id="stats">
+    <div class="stat"><div><div class="label">Total publicaciones</div><div class="value" id="s-total">—</div></div><div class="icon">📄</div></div>
+    <div class="stat alta"><div><div class="label">Alta prioridad</div><div class="value" id="s-alta">—</div></div><div class="icon">⚠️</div></div>
+    <div class="stat"><div><div class="label">Último mes</div><div class="value" id="s-mes">—</div></div><div class="icon">📅</div></div>
+    <div class="stat"><div><div class="label">Secciones cubiertas</div><div class="value">4</div></div><div class="icon">📂</div></div>
+  </div>
+
+  <!-- ── TAB: PUBLICACIONES ── -->
+  <div id="tab-publicaciones">
+    <!-- Filtros -->
+    <div class="filters">
+      <label>Prioridad</label>
+      <select id="f-priority" onchange="applyFilters()">
+        <option value="">Todas</option>
+        <option value="alta">Alta</option>
+        <option value="normal">Normal</option>
+      </select>
+      <label>Sección</label>
+      <select id="f-section" onchange="applyFilters()">
+        <option value="">Todas</option>
+        <option>Normas Generales</option>
+        <option>Normas Particulares</option>
+        <option>Publicaciones Judiciales</option>
+        <option>Avisos Destacados</option>
+      </select>
+      <label>Buscar</label>
+      <input type="text" id="f-search" placeholder="Texto en título…" oninput="applyFilters()" style="width:220px">
+      <button class="btn-clear" onclick="clearFilters()">✕ Limpiar</button>
+      <span id="result-count" style="font-size:12px;color:var(--muted);margin-left:auto"></span>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-wrap">
+      <div class="table-header">
+        <span>📋 Publicaciones relevantes</span>
+        <span id="table-subtitle" style="font-size:11px;opacity:0.6"></span>
+      </div>
+      <div id="table-body">
+        <div class="loading"><div class="spinner"></div>Cargando publicaciones…</div>
+      </div>
+      <div class="pagination" id="pagination" style="display:none">
+        <span id="pag-info"></span>
+        <div style="display:flex;gap:8px">
+          <button class="pag-btn" id="btn-prev" onclick="changePage(-1)">← Anterior</button>
+          <button class="pag-btn" id="btn-next" onclick="changePage(1)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB: KEYWORDS ── -->
+  <div id="tab-keywords">
+    <div class="table-wrap" style="padding:24px">
+      <div class="kw-edit-note">
+        💡 Para agregar o quitar keywords, edita el archivo <strong>keywords.json</strong> directamente en GitHub.
+        Los cambios aplican al próximo escaneo automático.
+      </div>
+      <div id="kw-content">
+        <div class="loading"><div class="spinner"></div>Cargando keywords…</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ──────────────────────────────────────────────────────────────
+// ESTADO GLOBAL
+// ──────────────────────────────────────────────────────────────
+let allPubs    = [];
+let filteredPubs = [];
+let currentPage  = 1;
+const PER_PAGE   = 50;
+
+// ──────────────────────────────────────────────────────────────
+// CARGA DE DATOS
+// ──────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const res  = await fetch('./data/publications.json?t=' + Date.now());
+    const data = await res.json();
+    allPubs = (data.publications || []).sort((a, b) => b.date.localeCompare(a.date));
+
+    // Actualizar stats
+    document.getElementById('last-update').textContent =
+      data.last_updated ? new Date(data.last_updated).toLocaleDateString('es-CL') : 'N/D';
+    document.getElementById('s-total').textContent = allPubs.length;
+    document.getElementById('s-alta').textContent  = allPubs.filter(p => p.priority === 'alta').length;
+
+    // Últimos 30 días
+    const hace30 = new Date(); hace30.setDate(hace30.getDate() - 30);
+    document.getElementById('s-mes').textContent =
+      allPubs.filter(p => {
+        const parts = p.date.split('-');
+        return new Date(parts[2], parts[1]-1, parts[0]) >= hace30;
+      }).length;
+
+    applyFilters();
+  } catch(e) {
+    document.getElementById('table-body').innerHTML =
+      '<div class="empty"><span class="icon">⚠️</span>Error cargando datos. Verifica que el escaneo histórico se haya ejecutado.</div>';
+  }
+}
+
+async function loadKeywords() {
+  try {
+    const res  = await fetch('./keywords.json?t=' + Date.now());
+    const kw   = await res.json();
+    const cats = {
+      alta_prioridad: { label: '⚠️ Alta Prioridad', cls: 'alta_prioridad' },
+      instituciones:  { label: '🏛️ Instituciones',  cls: 'instituciones'  },
+      materias:       { label: '📋 Materias',        cls: 'materias'       },
+    };
+    let html = '';
+    for (const [cat, meta] of Object.entries(cats)) {
+      const words = kw[cat] || [];
+      html += `<div class="kw-section">
+        <div class="kw-section-title">${meta.label} (${words.length})</div>
+        <div class="kw-list">
+          ${words.map(w => `<span class="kw-item ${meta.cls}">${w}</span>`).join('')}
+        </div>
+      </div>`;
+    }
+    document.getElementById('kw-content').innerHTML = html;
+  } catch(e) {
+    document.getElementById('kw-content').innerHTML = '<p style="color:red">Error cargando keywords.</p>';
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// FILTROS
+// ──────────────────────────────────────────────────────────────
+function applyFilters() {
+  const priority = document.getElementById('f-priority').value;
+  const section  = document.getElementById('f-section').value;
+  const search   = document.getElementById('f-search').value.toLowerCase().trim();
+
+  filteredPubs = allPubs.filter(p => {
+    if (priority && p.priority !== priority) return false;
+    if (section  && p.section  !== section)  return false;
+    if (search   && !p.title.toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  currentPage = 1;
+  renderTable();
+}
+
+function clearFilters() {
+  document.getElementById('f-priority').value = '';
+  document.getElementById('f-section').value  = '';
+  document.getElementById('f-search').value   = '';
+  applyFilters();
+}
+
+// ──────────────────────────────────────────────────────────────
+// RENDERIZADO
+// ──────────────────────────────────────────────────────────────
+function renderTable() {
+  const total  = filteredPubs.length;
+  const start  = (currentPage - 1) * PER_PAGE;
+  const page   = filteredPubs.slice(start, start + PER_PAGE);
+
+  document.getElementById('result-count').textContent =
+    total + ' resultado' + (total !== 1 ? 's' : '');
+  document.getElementById('table-subtitle').textContent =
+    `Mostrando ${start+1}–${Math.min(start+PER_PAGE, total)} de ${total}`;
+
+  if (!page.length) {
+    document.getElementById('table-body').innerHTML =
+      '<div class="empty"><span class="icon">📭</span>Sin publicaciones con los filtros seleccionados.</div>';
+    document.getElementById('pagination').style.display = 'none';
+    return;
+  }
+
+  const rows = page.map(p => {
+    const kws = (p.matched_kw || []).map(k => `<span class="kw-chip">${k}</span>`).join('');
+    return `<tr>
+      <td class="date-cell">${p.date}</td>
+      <td><span class="section-chip">${p.section}</span></td>
+      <td class="title-cell"><div class="title-text">${p.title}</div></td>
+      <td>${kws}</td>
+      <td><span class="badge badge-${p.priority}">${p.priority === 'alta' ? 'Alta' : 'Normal'}</span></td>
+      <td>${p.pdf_url ? `<a href="${p.pdf_url}" target="_blank" class="pdf-link">PDF →</a>` : ''}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('table-body').innerHTML = `
+    <table>
+      <thead><tr>
+        <th>Fecha</th><th>Sección</th><th>Título</th>
+        <th>Keywords</th><th>Prioridad</th><th>PDF</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  // Paginación
+  const pag = document.getElementById('pagination');
+  pag.style.display = total > PER_PAGE ? 'flex' : 'none';
+  document.getElementById('pag-info').textContent =
+    `Página ${currentPage} de ${Math.ceil(total / PER_PAGE)}`;
+  document.getElementById('btn-prev').disabled = currentPage === 1;
+  document.getElementById('btn-next').disabled = start + PER_PAGE >= total;
+}
+
+function changePage(delta) {
+  currentPage += delta;
+  renderTable();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ──────────────────────────────────────────────────────────────
+// TABS
+// ──────────────────────────────────────────────────────────────
+function showTab(name, btn) {
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-publicaciones').style.display = name === 'publicaciones' ? 'block' : 'none';
+  document.getElementById('tab-keywords').style.display      = name === 'keywords'      ? 'block' : 'none';
+  if (name === 'keywords') loadKeywords();
+}
+
+// ──────────────────────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
