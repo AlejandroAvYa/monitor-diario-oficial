@@ -1,7 +1,101 @@
 {
-  "last_updated": null,
-  "total": 0,
-  "editions_cache": {},
-  "publications": [],
+  "last_updated": "2026-04-15",
+  "total": 7,
+  "editions_cache": {
+    "15-04-2026": 44425
+  },
+  "publications": [
+    {
+      "cve": "2792137",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Abarca - FHP Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2792137.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2790866",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Banda - Servicios de Seguridad Privada Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2790866.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2790193",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Bravo Gutiérrez Camilo Mauricio - Recursos Humanos en Seguridad Privada Abraham Antonio Leiva Sazo",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2790193.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2791368",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Empresa de Seguridad Vanguard Chile SpA - Enerside Energy SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2791368.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2793389",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Faúndez Valenzuela José Claudio - Empresa de Seguridad y Servicios Limitada y otros",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2793389.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2795102",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Rojas - Servicios Integrales de Seguridad Privada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2795102.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2793040",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Tapia - Empresa en RR.HH. e Inherente en Seguridad Privada Rosa Mancilla Mancilla E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2793040.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    }
+  ],
   "skipped_dates": []
 }
