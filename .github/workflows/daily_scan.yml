@@ -1,12 +1,9 @@
 name: 📋 Escaneo Diario — Diario Oficial
 
 on:
-  # Cron: lunes a viernes a las 13:00 UTC = 10:00 AM Chile (invierno)
-  # En horario de verano (oct-mar), cambiar 13 por 12
   schedule:
     - cron: '0 13 * * 1-5'
 
-  # Permite ejecutar manualmente desde GitHub → Actions → Run workflow
   workflow_dispatch:
     inputs:
       modo:
@@ -24,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # necesario para commitear el JSON actualizado
+      contents: write
 
     steps:
       - name: 📥 Checkout del repositorio
@@ -44,17 +41,17 @@ jobs:
       - name: 🔍 Ejecutar escaneo diario
         if: ${{ github.event_name == 'schedule' || inputs.modo == 'diario' }}
         env:
-          GMAIL_USER:          ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD:  ${{ secrets.GMAIL_APP_PASSWORD }}
-          NOTIFY_EMAIL:        ${{ secrets.NOTIFY_EMAIL }}
+          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NOTIFY_EMAIL:       ${{ secrets.NOTIFY_EMAIL }}
         run: python scraper.py
 
       - name: 📚 Ejecutar escaneo histórico (15-02-2025 → hoy)
         if: ${{ inputs.modo == 'historico' }}
         env:
-          GMAIL_USER:          ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD:  ${{ secrets.GMAIL_APP_PASSWORD }}
-          NOTIFY_EMAIL:        ${{ secrets.NOTIFY_EMAIL }}
+          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NOTIFY_EMAIL:       ${{ secrets.NOTIFY_EMAIL }}
         run: python scraper.py --historical
 
       - name: 💾 Commitear datos actualizados
@@ -62,6 +59,5 @@ jobs:
           git config user.name  "Monitor DO Bot"
           git config user.email "monitor-do@noreply.github.com"
           git add data/publications.json
-          # Solo commitear si hay cambios reales
           git diff --staged --quiet || git commit -m "📊 Actualización DO $(date +'%d-%m-%Y')"
           git push
