@@ -1,7 +1,2035 @@
 {
-  "last_updated": null,
-  "total": 0,
-  "editions_cache": {},
-  "publications": [],
-  "skipped_dates": []
+  "last_updated": "2026-04-16",
+  "total": 122,
+  "editions_cache": {
+    "10-02-2025": 44071,
+    "11-02-2025": 44072,
+    "12-02-2025": 44073,
+    "13-02-2025": 44074,
+    "14-02-2025": 44075,
+    "15-02-2025": 44076,
+    "17-02-2025": 44077,
+    "18-02-2025": 44078,
+    "19-02-2025": 44079,
+    "20-02-2025": 44080,
+    "21-02-2025": 44081,
+    "22-02-2025": 44082,
+    "24-02-2025": 44083,
+    "25-02-2025": 44084,
+    "26-02-2025": 44085,
+    "27-02-2025": 44086,
+    "28-02-2025": 44087,
+    "01-03-2025": 44088,
+    "03-03-2025": 44089,
+    "04-03-2025": 44090,
+    "05-03-2025": 44091,
+    "06-03-2025": 44092,
+    "07-03-2025": 44093,
+    "08-03-2025": 44094,
+    "10-03-2025": 44095,
+    "11-03-2025": 44096,
+    "12-03-2025": 44097,
+    "13-03-2025": 44098,
+    "14-03-2025": 44099,
+    "15-03-2025": 44100,
+    "17-03-2025": 44101,
+    "18-03-2025": 44102,
+    "19-03-2025": 44103,
+    "20-03-2025": 44104,
+    "21-03-2025": 44105,
+    "22-03-2025": 44106,
+    "24-03-2025": 44107,
+    "25-03-2025": 44108,
+    "26-03-2025": 44109,
+    "27-03-2025": 44110,
+    "28-03-2025": 44111,
+    "29-03-2025": 44112,
+    "31-03-2025": 44113,
+    "01-04-2025": 44114,
+    "02-04-2025": 44115,
+    "03-04-2025": 44116,
+    "04-04-2025": 44117,
+    "05-04-2025": 44118,
+    "07-04-2025": 44119,
+    "08-04-2025": 44120,
+    "09-04-2025": 44121,
+    "10-04-2025": 44122,
+    "11-04-2025": 44123,
+    "12-04-2025": 44124,
+    "14-04-2025": 44125,
+    "15-04-2025": 44126,
+    "16-04-2025": 44127,
+    "17-04-2025": 44128,
+    "21-04-2025": 44129,
+    "22-04-2025": 44130,
+    "23-04-2025": 44131,
+    "24-04-2025": 44132,
+    "25-04-2025": 44133,
+    "26-04-2025": 44134,
+    "28-04-2025": 44135,
+    "29-04-2025": 44136,
+    "30-04-2025": 44137,
+    "02-05-2025": 44138,
+    "03-05-2025": 44139,
+    "05-05-2025": 44140,
+    "06-05-2025": 44141,
+    "07-05-2025": 44142,
+    "08-05-2025": 44143,
+    "09-05-2025": 44144,
+    "10-05-2025": 44145,
+    "12-05-2025": 44146,
+    "13-05-2025": 44147,
+    "14-05-2025": 44148,
+    "15-05-2025": 44149,
+    "16-05-2025": 44150,
+    "17-05-2025": 44151,
+    "19-05-2025": 44152,
+    "20-05-2025": 44153,
+    "22-05-2025": 44154,
+    "23-05-2025": 44155,
+    "24-05-2025": 44156,
+    "26-05-2025": 44157,
+    "27-05-2025": 44158,
+    "28-05-2025": 44159,
+    "29-05-2025": 44160,
+    "30-05-2025": 44161,
+    "31-05-2025": 44162,
+    "02-06-2025": 44163,
+    "03-06-2025": 44164,
+    "04-06-2025": 44165,
+    "05-06-2025": 44166,
+    "06-06-2025": 44167,
+    "07-06-2025": 44168,
+    "09-06-2025": 44169,
+    "10-06-2025": 44170,
+    "11-06-2025": 44171,
+    "12-06-2025": 44172,
+    "13-06-2025": 44173,
+    "14-06-2025": 44174,
+    "16-06-2025": 44175,
+    "17-06-2025": 44176,
+    "18-06-2025": 44177,
+    "19-06-2025": 44178,
+    "21-06-2025": 44179,
+    "23-06-2025": 44180,
+    "24-06-2025": 44181,
+    "25-06-2025": 44182,
+    "26-06-2025": 44183,
+    "27-06-2025": 44184,
+    "28-06-2025": 44185,
+    "30-06-2025": 44186,
+    "01-07-2025": 44187,
+    "02-07-2025": 44188,
+    "03-07-2025": 44189,
+    "04-07-2025": 44190,
+    "05-07-2025": 44191,
+    "07-07-2025": 44192,
+    "08-07-2025": 44193,
+    "09-07-2025": 44194,
+    "10-07-2025": 44195,
+    "11-07-2025": 44196,
+    "12-07-2025": 44197,
+    "14-07-2025": 44198,
+    "15-07-2025": 44199,
+    "17-07-2025": 44200,
+    "18-07-2025": 44201,
+    "19-07-2025": 44202,
+    "21-07-2025": 44203,
+    "22-07-2025": 44204,
+    "23-07-2025": 44205,
+    "24-07-2025": 44206,
+    "25-07-2025": 44207,
+    "26-07-2025": 44208,
+    "28-07-2025": 44209,
+    "29-07-2025": 44210,
+    "30-07-2025": 44211,
+    "31-07-2025": 44212,
+    "01-08-2025": 44213,
+    "02-08-2025": 44214,
+    "30-09-2025": 44262,
+    "01-10-2025": 44263,
+    "02-10-2025": 44264,
+    "03-10-2025": 44265,
+    "04-10-2025": 44266,
+    "06-10-2025": 44267,
+    "07-10-2025": 44268,
+    "08-10-2025": 44269,
+    "09-10-2025": 44270,
+    "10-10-2025": 44271,
+    "11-10-2025": 44272,
+    "13-10-2025": 44273,
+    "14-10-2025": 44274,
+    "15-10-2025": 44275,
+    "16-10-2025": 44276,
+    "17-10-2025": 44277,
+    "18-10-2025": 44278,
+    "20-10-2025": 44279,
+    "21-10-2025": 44280,
+    "22-10-2025": 44281,
+    "23-10-2025": 44282,
+    "24-10-2025": 44283,
+    "25-10-2025": 44284,
+    "27-10-2025": 44285,
+    "28-10-2025": 44286,
+    "29-10-2025": 44287,
+    "30-10-2025": 44288,
+    "03-11-2025": 44289,
+    "04-11-2025": 44290,
+    "05-11-2025": 44291,
+    "06-11-2025": 44292,
+    "07-11-2025": 44293,
+    "08-11-2025": 44294,
+    "10-11-2025": 44295,
+    "11-11-2025": 44296,
+    "12-11-2025": 44297,
+    "13-11-2025": 44298,
+    "14-11-2025": 44299,
+    "15-11-2025": 44300,
+    "17-11-2025": 44301,
+    "18-11-2025": 44302,
+    "19-11-2025": 44303,
+    "20-11-2025": 44304,
+    "21-11-2025": 44305,
+    "22-11-2025": 44306,
+    "24-11-2025": 44307,
+    "25-11-2025": 44308,
+    "26-11-2025": 44309,
+    "27-11-2025": 44310,
+    "28-11-2025": 44311,
+    "29-11-2025": 44312,
+    "01-12-2025": 44313,
+    "02-12-2025": 44314,
+    "03-12-2025": 44315,
+    "04-12-2025": 44316,
+    "05-12-2025": 44317,
+    "06-12-2025": 44318,
+    "09-12-2025": 44319,
+    "10-12-2025": 44320,
+    "11-12-2025": 44321,
+    "12-12-2025": 44322,
+    "13-12-2025": 44323,
+    "15-12-2025": 44324,
+    "16-12-2025": 44325,
+    "17-12-2025": 44326,
+    "18-12-2025": 44327,
+    "19-12-2025": 44328,
+    "20-12-2025": 44329,
+    "22-12-2025": 44330,
+    "23-12-2025": 44331,
+    "24-12-2025": 44332,
+    "26-12-2025": 44333,
+    "27-12-2025": 44334,
+    "29-12-2025": 44335,
+    "30-12-2025": 44336,
+    "31-12-2025": 44337,
+    "02-01-2026": 44338,
+    "03-01-2026": 44339,
+    "05-01-2026": 44340,
+    "06-01-2026": 44341,
+    "07-01-2026": 44342,
+    "08-01-2026": 44343,
+    "09-01-2026": 44344,
+    "10-01-2026": 44345,
+    "12-01-2026": 44346,
+    "13-01-2026": 44347,
+    "14-01-2026": 44348,
+    "15-01-2026": 44349,
+    "16-01-2026": 44350,
+    "17-01-2026": 44351,
+    "02-03-2026": 44389,
+    "03-03-2026": 44390,
+    "04-03-2026": 44391,
+    "05-03-2026": 44392,
+    "06-03-2026": 44393,
+    "07-03-2026": 44394,
+    "09-03-2026": 44395,
+    "10-03-2026": 44396,
+    "11-03-2026": 44397,
+    "12-03-2026": 44398,
+    "13-03-2026": 44399,
+    "14-03-2026": 44400,
+    "16-03-2026": 44401,
+    "17-03-2026": 44402,
+    "18-03-2026": 44403,
+    "19-03-2026": 44404,
+    "20-03-2026": 44405,
+    "21-03-2026": 44406,
+    "23-03-2026": 44407,
+    "24-03-2026": 44408,
+    "25-03-2026": 44409,
+    "26-03-2026": 44410,
+    "27-03-2026": 44411,
+    "28-03-2026": 44412,
+    "30-03-2026": 44413,
+    "31-03-2026": 44414,
+    "01-04-2026": 44415,
+    "02-04-2026": 44416,
+    "06-04-2026": 44417,
+    "07-04-2026": 44418,
+    "08-04-2026": 44419,
+    "09-04-2026": 44420,
+    "10-04-2026": 44421,
+    "11-04-2026": 44422,
+    "13-04-2026": 44423,
+    "14-04-2026": 44424,
+    "15-04-2026": 44425
+  },
+  "publications": [
+    {
+      "cve": "2607117",
+      "date": "15-02-2025",
+      "edition_id": 44076,
+      "section": "Publicaciones Judiciales",
+      "title": "Cáceres - Consorcio de Seguridad Privada LyS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/02/15/44076/03/2607117.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2605732",
+      "date": "15-02-2025",
+      "edition_id": 44076,
+      "section": "Publicaciones Judiciales",
+      "title": "Huanquil - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/02/15/44076/03/2605732.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2607559",
+      "date": "15-02-2025",
+      "edition_id": 44076,
+      "section": "Publicaciones Judiciales",
+      "title": "Jara Cuevas Gael Vicente y otro - Seguridad Privada Preventiva SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/02/15/44076/03/2607559.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2606920",
+      "date": "15-02-2025",
+      "edition_id": 44076,
+      "section": "Publicaciones Judiciales",
+      "title": "Rodríguez - Consorcio de Seguridad Privada LyS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/02/15/44076/03/2606920.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2609192",
+      "date": "15-02-2025",
+      "edition_id": 44076,
+      "section": "Publicaciones Judiciales",
+      "title": "Sepúlveda Velásquez David - Seguridad Privada Velásquez SpA y otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/02/15/44076/03/2609192.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2610287",
+      "date": "01-03-2025",
+      "edition_id": 44088,
+      "section": "Publicaciones Judiciales",
+      "title": "Acevedo - Comercializadora Agrícola y Seguridad Privada Chile Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/01/44088/03/2610287.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2612838",
+      "date": "01-03-2025",
+      "edition_id": 44088,
+      "section": "Publicaciones Judiciales",
+      "title": "Brevis Azolas Fermín - Empresa de Seguridad Gol Security Sistems Ltda. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/01/44088/03/2612838.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2612888",
+      "date": "01-03-2025",
+      "edition_id": 44088,
+      "section": "Publicaciones Judiciales",
+      "title": "Miranda Campos Manuel Ricardo - Seguridad Privada Atalaya SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/01/44088/03/2612888.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2620384",
+      "date": "15-03-2025",
+      "edition_id": 44100,
+      "section": "Publicaciones Judiciales",
+      "title": "Carvajal - Servicios de Seguridad Privada Rada Ltda. y otros",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/15/44100/03/2620384.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2620530",
+      "date": "15-03-2025",
+      "edition_id": 44100,
+      "section": "Publicaciones Judiciales",
+      "title": "Mella Bascuñán Paulina Victoria - Empresa Seguridad Privada Vanguard Chile SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/15/44100/03/2620530.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2617064",
+      "date": "15-03-2025",
+      "edition_id": 44100,
+      "section": "Publicaciones Judiciales",
+      "title": "Quintero - Mamba Servicios de Seguridad Privada Ltda.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/15/44100/03/2617064.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2618012",
+      "date": "15-03-2025",
+      "edition_id": 44100,
+      "section": "Publicaciones Judiciales",
+      "title": "Ramos - Mamba Servicios de Seguridad Privada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/15/44100/03/2618012.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2620510",
+      "date": "15-03-2025",
+      "edition_id": 44100,
+      "section": "Publicaciones Judiciales",
+      "title": "Salamanca Huenuman José David - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/15/44100/03/2620510.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2619919",
+      "date": "15-03-2025",
+      "edition_id": 44100,
+      "section": "Publicaciones Judiciales",
+      "title": "Torres Fernández Rigoberto Emilio - Marco Antonio Rojas Herrera Seguridad Privada E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/03/15/44100/03/2619919.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2620891",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Araya Cid Mauricio Esteban - BZ Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2620891.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2625531",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Díaz - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2625531.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2625532",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Herrera - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2625532.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2625633",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Herrera Alegullar Williams - Servicios de Seguridad Privada Black Man Security Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2625633.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2625193",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Lerzundi Vargas Rodrigo Alberto - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2625193.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2622524",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Mondaca Albornoz Juan Carlos - Seguridad Privada Integral y Aseo Industrial New Security SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2622524.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2626750",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Mondaca Albornoz Juan Carlos - Seguridad Privada Integral y Aseo Industrial New Security SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2626750.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2625530",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Patiño - Consorcio de Seguridad Privada Lys SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2625530.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2621045",
+      "date": "01-04-2025",
+      "edition_id": 44114,
+      "section": "Publicaciones Judiciales",
+      "title": "Velásquez Velásquez Rodrigo Javier - Consorcio de Seguridad Privada LYS SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/01/44114/03/2621045.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2631574",
+      "date": "15-04-2025",
+      "edition_id": 44126,
+      "section": "Publicaciones Judiciales",
+      "title": "Letelier - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/04/15/44126/03/2631574.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2634419",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "Casanova Ortega Javier Ariel - Empresa Seguridad Privada Vanguard Chile SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2634419.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2636699",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "Cortés Sepúlveda Francisca Fabiola - Carmen Gloria Medel Vera Seguridad Privada E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2636699.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2637107",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "González Barra Sergio Arturo - Empresa de Seguridad Privada S.A. y otros",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2637107.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2639296",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "Herrera Tobar Luis Armando - Empresa de Seguridad Privada S.A. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2639296.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2632596",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "Muñoz Monroy Álvaro del Carmen - Empresa Seguridad Privada Integral y Aseo Industrial NEW Security Industrial SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2632596.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2633816",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "Negrón - Mamba Servicios de Seguridad Privada Ltda.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2633816.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2634949",
+      "date": "02-05-2025",
+      "edition_id": 44138,
+      "section": "Publicaciones Judiciales",
+      "title": "Venegas - Consorcio de Seguridad Privada LyS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/02/44138/03/2634949.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2645234",
+      "date": "15-05-2025",
+      "edition_id": 44149,
+      "section": "Publicaciones Judiciales",
+      "title": "Acuña Caballero Juan Daniel - Sima Protects Servicios de Seguridad y Vigilancia Privada SpA y otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/15/44149/03/2645234.pdf",
+      "matched_kw": [
+        "vigilancia privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2645168",
+      "date": "15-05-2025",
+      "edition_id": 44149,
+      "section": "Publicaciones Judiciales",
+      "title": "Espinoza Delgado Claudia - Cobra Servicios de Seguridad Privada Ltda y otros",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/15/44149/03/2645168.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2641817",
+      "date": "15-05-2025",
+      "edition_id": 44149,
+      "section": "Publicaciones Judiciales",
+      "title": "Guajardo Toro Julio Alberto - Empresa de Seguridad God Sistema SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/15/44149/03/2641817.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2642608",
+      "date": "15-05-2025",
+      "edition_id": 44149,
+      "section": "Publicaciones Judiciales",
+      "title": "Mendoza Arce Nicol Andrea - HM Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/15/44149/03/2642608.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2640748",
+      "date": "15-05-2025",
+      "edition_id": 44149,
+      "section": "Publicaciones Judiciales",
+      "title": "Vásquez Bello Lissette Carmen - Marco Antonio Rojas Herrera Seguridad Privada E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/05/15/44149/03/2640748.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2648129",
+      "date": "02-06-2025",
+      "edition_id": 44163,
+      "section": "Publicaciones Judiciales",
+      "title": "Banco de Chile - CMF SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/02/44163/03/2648129.pdf",
+      "matched_kw": [
+        "CMF"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2646318",
+      "date": "02-06-2025",
+      "edition_id": 44163,
+      "section": "Publicaciones Judiciales",
+      "title": "Medina Navarro Carlos Benicio - Empresa de Seguridad God Seguridad y Systema SpA y otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/02/44163/03/2646318.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2649061",
+      "date": "02-06-2025",
+      "edition_id": 44163,
+      "section": "Publicaciones Judiciales",
+      "title": "Poblete Norambuena Luis Alfredo - Empresa de Seguridad Privada, Integral y Aseo Industrial New Security SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/02/44163/03/2649061.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2648088",
+      "date": "02-06-2025",
+      "edition_id": 44163,
+      "section": "Publicaciones Judiciales",
+      "title": "Zurita Meriño Luis Gonzalo - Seguridad Privada Integral y Aseo Industrial New Security SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/02/44163/03/2648088.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2656493",
+      "date": "16-06-2025",
+      "edition_id": 44175,
+      "section": "Publicaciones Judiciales",
+      "title": "Campos - MVE Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/16/44175/03/2656493.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2656800",
+      "date": "16-06-2025",
+      "edition_id": 44175,
+      "section": "Publicaciones Judiciales",
+      "title": "Cerna Ulloa Víctor Hugo - Sociedad de Empresa de Aseo y Seguridad Privada Hermanos Guerrero Fuentes SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/16/44175/03/2656800.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2657444",
+      "date": "16-06-2025",
+      "edition_id": 44175,
+      "section": "Publicaciones Judiciales",
+      "title": "Orellana Urzúa Patricio Andrés - Empresa de Seguridad Belfast Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/16/44175/03/2657444.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2657793",
+      "date": "16-06-2025",
+      "edition_id": 44175,
+      "section": "Publicaciones Judiciales",
+      "title": "Villar - Sociedad de Empresa de Aseo y Seguridad Privada HN",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/16/44175/03/2657793.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2664212",
+      "date": "27-06-2025",
+      "edition_id": 44184,
+      "section": "Avisos Destacados",
+      "title": "Reposición Cuartel Policía de Investigaciones (PDI), Vallenar",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/06/27/44184/04/2664212.pdf",
+      "matched_kw": [
+        "Policía de Investigaciones"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2664292",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Aracena Gómez Rodrigo - Sociedad de Empresa de Aseo y Seguridad Privada Hnos. GF y otro",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2664292.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2658578",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Gutiérrez Camacho - Sociedad de Seguridad Privada Integral Link Limitada y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2658578.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2658586",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Jaramillo Altamirano Francisco Antonio - Empresa de Seguridad Privada Vanguard Chile",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2658586.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2661696",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Jiménez - Megaservicios Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2661696.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2659995",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Murga González Marcos Daniel - Empresa de Seguridad Privada Marco Antonio Rojas Herrera E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2659995.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2664305",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Pradeñas Donoso Freddy - Servicios Integrales en Materias Inherentes a Seguridad Privada y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2664305.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2660523",
+      "date": "01-07-2025",
+      "edition_id": 44187,
+      "section": "Publicaciones Judiciales",
+      "title": "Zurita Meriño Luis Gonzalo - Seguridad Privada Integral y Aseo Industrial New Security SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/01/44187/03/2660523.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2668659",
+      "date": "05-07-2025",
+      "edition_id": 44191,
+      "section": "Avisos Destacados",
+      "title": "Modificación Aviso Licitación Pública Obra Reposición Cuartel Policía de Investigaciones (PDI), Vallenar",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/05/44191/04/2668659.pdf",
+      "matched_kw": [
+        "Policía de Investigaciones"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2668741",
+      "date": "15-07-2025",
+      "edition_id": 44199,
+      "section": "Publicaciones Judiciales",
+      "title": "Calisaya Velarde Aída Rosa - Sociedad de Seguridad Privada Integral Link Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/15/44199/03/2668741.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2667682",
+      "date": "15-07-2025",
+      "edition_id": 44199,
+      "section": "Publicaciones Judiciales",
+      "title": "Cromilakis - Consorcio de Seguridad Privada LYS SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/15/44199/03/2667682.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2668739",
+      "date": "15-07-2025",
+      "edition_id": 44199,
+      "section": "Publicaciones Judiciales",
+      "title": "Gutiérrez Camacho María del Carmen - Sociedad de Seguridad Privada Integral Link Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/15/44199/03/2668739.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2667002",
+      "date": "15-07-2025",
+      "edition_id": 44199,
+      "section": "Publicaciones Judiciales",
+      "title": "Sánchez Yeimy Carolina - Seguridad Privada Integral Aseo Industrial New Security SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/07/15/44199/03/2667002.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2676896",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Aguilera Valenzuela Lia Marion - Aademia de Seguridad Privada Tactical Partners SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2676896.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2677675",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Araya - Seguridad Privada Integral y Aseo Industrial New Security Maule SpA y otro",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2677675.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2674130",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Campos - Toledo Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2674130.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2674736",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Castillo Morales Fabián Andrés - Academia Seguridad Privada Tactical Partners SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2674736.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2671230",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Matamala Matamala Nataly Ivonne - Consorcio de Seguridad Privada Lys SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2671230.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2671499",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Muñoz Fernández Christian - Empresa de Seguridad y Servicios Ltda. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2671499.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2675078",
+      "date": "01-08-2025",
+      "edition_id": 44213,
+      "section": "Publicaciones Judiciales",
+      "title": "Vásquez - Consorcio de Seguridad Privada LYS SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/08/01/44213/03/2675078.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2702094",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Carvajal - Academia de Seguridad Privada Tactical Partners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2702094.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2702103",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Castillo - Academia de Seguridad Privada Tactical Partners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2702103.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2700461",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Duarte Salfate Gonzalo Matías - Academia de Seguridad Privada Tactical Patners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2700461.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2700223",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Ferrada Astorga Patricio Hernán - Servicios Integrales Inherentes a Seguridad Privada Capac",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2700223.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2702300",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Reyes Soto Luis Enrique - Carmen Gloria Medel Vera Seguridad Privada E.I.R.L. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2702300.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2702673",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Sandez Jonathan Eduardo - Academia de Seguridad Privada Tactical Partners SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2702673.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2699971",
+      "date": "01-10-2025",
+      "edition_id": 44263,
+      "section": "Publicaciones Judiciales",
+      "title": "Triviño García Fabián Eduardo - Academia de Seguridad Privada Tactical Partners Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/01/44263/03/2699971.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2710861",
+      "date": "15-10-2025",
+      "edition_id": 44275,
+      "section": "Publicaciones Judiciales",
+      "title": "Fernández Soto - Sociedad de Seguridad Privada Integral Link Limitada y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/15/44275/03/2710861.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2709430",
+      "date": "15-10-2025",
+      "edition_id": 44275,
+      "section": "Publicaciones Judiciales",
+      "title": "Guajardo Toro Julio Alberto - Empresa de Seguridad God Sistema SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/15/44275/03/2709430.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2708413",
+      "date": "15-10-2025",
+      "edition_id": 44275,
+      "section": "Publicaciones Judiciales",
+      "title": "Herrera Tobar Luis Armando - Empresa de Seguridad Privada S.A.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/15/44275/03/2708413.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2706618",
+      "date": "15-10-2025",
+      "edition_id": 44275,
+      "section": "Publicaciones Judiciales",
+      "title": "Millacheo Osorio Mariana - Toledo Seguridad Privada SpA y otros",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/10/15/44275/03/2706618.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2719408",
+      "date": "03-11-2025",
+      "edition_id": 44289,
+      "section": "Publicaciones Judiciales",
+      "title": "Maldonado - Toledo Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/11/03/44289/03/2719408.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2724052",
+      "date": "15-11-2025",
+      "edition_id": 44300,
+      "section": "Publicaciones Judiciales",
+      "title": "Arriagada Ralil Franco Simón - Toledo Seguridad Privada Ltda. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/11/15/44300/03/2724052.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2724547",
+      "date": "15-11-2025",
+      "edition_id": 44300,
+      "section": "Publicaciones Judiciales",
+      "title": "Bravo - Empresa en RR.HH. en Seguridad Privada Abraham Anto y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/11/15/44300/03/2724547.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2722009",
+      "date": "15-11-2025",
+      "edition_id": 44300,
+      "section": "Publicaciones Judiciales",
+      "title": "Garrido Atavales Bárbara Paz - Academia de Seguridad Privada Tactical Partners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/11/15/44300/03/2722009.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2721184",
+      "date": "15-11-2025",
+      "edition_id": 44300,
+      "section": "Publicaciones Judiciales",
+      "title": "Hurtado Mosquera Edduar Wladimir - Consorcio de Seguridad Privada LyS SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/11/15/44300/03/2721184.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2735965",
+      "date": "15-12-2025",
+      "edition_id": 44324,
+      "section": "Publicaciones Judiciales",
+      "title": "Camisa - Seguridad Privada Preventiva SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/12/15/44324/03/2735965.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2734852",
+      "date": "15-12-2025",
+      "edition_id": 44324,
+      "section": "Publicaciones Judiciales",
+      "title": "González - Consorcio de Seguridad Privada LYS SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/12/15/44324/03/2734852.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2738763",
+      "date": "15-12-2025",
+      "edition_id": 44324,
+      "section": "Publicaciones Judiciales",
+      "title": "Guerrero María Virginia - Academia de Seguridad Privada Tactical Partners SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/12/15/44324/03/2738763.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2736723",
+      "date": "15-12-2025",
+      "edition_id": 44324,
+      "section": "Publicaciones Judiciales",
+      "title": "Llaitul Cuevas Enrique Heriberto - Servicios de Seguridad Privada Ltda. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/12/15/44324/03/2736723.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2737807",
+      "date": "15-12-2025",
+      "edition_id": 44324,
+      "section": "Publicaciones Judiciales",
+      "title": "Mendoza Rojas Patricio - L&A Seguridad Privada SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2025/12/15/44324/03/2737807.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2741964",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Banco del Estado de Chile - Empresa de Seguridad Privada Serprotal SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2741964.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2746476",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Gajardo Becerra Juan Miguel - Bodealert Seguridad Privada SpA y otro",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2746476.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2742982",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Lizardi Tavilo Jetzabell Hellen  - Academia de Seguridad Privada Tactical Partners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2742982.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2739921",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Martínez González Eliana Denise - Empresa de Seguridad Privada S.A. y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2739921.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2745272",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Miranda - Recursos Humanos en Seguridad Privada Abraham Anto y Otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2745272.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2743633",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Miranda - Seguridad Privada Velásquez SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2743633.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2741798",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Valencia - Seguridad Privada Segurfénix SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2741798.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2742814",
+      "date": "02-01-2026",
+      "edition_id": 44338,
+      "section": "Publicaciones Judiciales",
+      "title": "Zamorano - Academia de Seguridad Privada Tactical Partners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/02/44338/03/2742814.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2749448",
+      "date": "08-01-2026",
+      "edition_id": 44343,
+      "section": "Normas Particulares",
+      "title": "Decreto exento número 212, de 2025.- Autoriza circulación y exceptúa del uso de disco fiscal a vehículo de la Subsecretaría de Seguridad Pública, en los términos que indica",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/08/44343/02/2749448.pdf",
+      "matched_kw": [
+        "seguridad pública"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2750659",
+      "date": "15-01-2026",
+      "edition_id": 44349,
+      "section": "Publicaciones Judiciales",
+      "title": "Faúndez - Empresa de Seguridad y Servicios Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/15/44349/03/2750659.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2753303",
+      "date": "15-01-2026",
+      "edition_id": 44349,
+      "section": "Publicaciones Judiciales",
+      "title": "Sánchez - Prosecurity Safe Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/01/15/44349/03/2753303.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2770069",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Normas Particulares",
+      "title": "Resolución exenta número 2.000-3.393, de 2026.- Notifica resoluciones de multas originadas en procedimiento de fiscalización",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/02/2770069.pdf",
+      "matched_kw": [
+        "fiscalización"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2769209",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Arriagada Ralil Franco Simón -  Toledo Seguridad Privada Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2769209.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2774747",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Cabrera - Empresa de Seguridad Rivamar Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2774747.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2769068",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Cesped Pizarro Hernán - Academia de Seguridad Privada Tactical Partners SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2769068.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2773969",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Muñoz Muñoz Víctor Custodio - Carmen Gloria Medel Vera Seguridad Privada E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2773969.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2770304",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Narváez - Empresa de Seguridad God Seguridad y Sistema SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2770304.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2772113",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Recabarren - Consorcio de Seguridad Privada Lys SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2772113.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2771082",
+      "date": "02-03-2026",
+      "edition_id": 44389,
+      "section": "Publicaciones Judiciales",
+      "title": "Ruz Bugueño Luis Alfredo - L & A Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/02/44389/03/2771082.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2776061",
+      "date": "05-03-2026",
+      "edition_id": 44392,
+      "section": "Normas Particulares",
+      "title": "Extracto de resolución exenta número 405, de 2026.- Academia de Seguridad Privada Protec360 SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/05/44392/02/2776061.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2777519",
+      "date": "06-03-2026",
+      "edition_id": 44393,
+      "section": "Avisos Destacados",
+      "title": "Consultoría Asesoría a la Inspección Fiscal de la Obra Remodelación y Normalización Hospital de Carabineros de Chile, Comuna de Ñuñoa, Ciudad de Santiago (Pediatría Oriente)",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/06/44393/04/2777519.pdf",
+      "matched_kw": [
+        "Carabineros de Chile"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2777245",
+      "date": "16-03-2026",
+      "edition_id": 44401,
+      "section": "Normas Particulares",
+      "title": "Resolución exenta número 2000-3767/2026, de 2026.- Notifica resoluciones de multas originadas en procedimientos de fiscalización",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/16/44401/02/2777245.pdf",
+      "matched_kw": [
+        "fiscalización"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2780743",
+      "date": "16-03-2026",
+      "edition_id": 44401,
+      "section": "Publicaciones Judiciales",
+      "title": "Pardo - Empresa de Seguridad Rivimar Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/16/44401/03/2780743.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2781351",
+      "date": "16-03-2026",
+      "edition_id": 44401,
+      "section": "Publicaciones Judiciales",
+      "title": "Pérez Coroseo José - Víctor Sepúlveda Servicios de Seguridad Privada E.I.R.L. y otro",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/03/16/44401/03/2781351.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2788900",
+      "date": "01-04-2026",
+      "edition_id": 44415,
+      "section": "Publicaciones Judiciales",
+      "title": "Banco del Estado de Chile - Sociedad Argos Seguridad Privada Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/01/44415/03/2788900.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2788334",
+      "date": "01-04-2026",
+      "edition_id": 44415,
+      "section": "Publicaciones Judiciales",
+      "title": "Barra - Empresa RRHH Inherentes a Seguridad Privada AYF Security SpA y otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/01/44415/03/2788334.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2789387",
+      "date": "01-04-2026",
+      "edition_id": 44415,
+      "section": "Publicaciones Judiciales",
+      "title": "Campos Orellana Julio César - Sociedad de Empresa de Aseo y Seguridad Privada Hermanos G.F. SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/01/44415/03/2789387.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2783823",
+      "date": "01-04-2026",
+      "edition_id": 44415,
+      "section": "Publicaciones Judiciales",
+      "title": "Moreira - Seguridad Privada Integral y Aseo Industrial New Security SpA y otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/01/44415/03/2783823.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2785106",
+      "date": "01-04-2026",
+      "edition_id": 44415,
+      "section": "Publicaciones Judiciales",
+      "title": "Muñoz - Servicios de Seguridad Privada Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/01/44415/03/2785106.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2789494",
+      "date": "09-04-2026",
+      "edition_id": 44420,
+      "section": "Normas Particulares",
+      "title": "Decreto exento número 282, de 2025.- Autoriza circulación y exceptúa del uso de disco fiscal a vehículos de la Subsecretaría de Seguridad Pública, en los términos que indica",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/09/44420/02/2789494.pdf",
+      "matched_kw": [
+        "seguridad pública"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2792137",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Abarca - FHP Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2792137.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2790866",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Banda - Servicios de Seguridad Privada Limitada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2790866.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2790193",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Bravo Gutiérrez Camilo Mauricio - Recursos Humanos en Seguridad Privada Abraham Antonio Leiva Sazo",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2790193.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2791368",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Empresa de Seguridad Vanguard Chile SpA - Enerside Energy SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2791368.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2793389",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Faúndez Valenzuela José Claudio - Empresa de Seguridad y Servicios Limitada y otros",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2793389.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2795102",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Rojas - Servicios Integrales de Seguridad Privada",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2795102.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2793040",
+      "date": "15-04-2026",
+      "edition_id": 44425,
+      "section": "Publicaciones Judiciales",
+      "title": "Tapia - Empresa en RR.HH. e Inherente en Seguridad Privada Rosa Mancilla Mancilla E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2793040.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    }
+  ],
+  "skipped_dates": [
+    "16-02-2025",
+    "23-02-2025",
+    "02-03-2025",
+    "09-03-2025",
+    "16-03-2025",
+    "23-03-2025",
+    "30-03-2025",
+    "06-04-2025",
+    "13-04-2025",
+    "18-04-2025",
+    "19-04-2025",
+    "20-04-2025",
+    "27-04-2025",
+    "01-05-2025",
+    "04-05-2025",
+    "11-05-2025",
+    "18-05-2025",
+    "21-05-2025",
+    "25-05-2025",
+    "01-06-2025",
+    "08-06-2025",
+    "15-06-2025",
+    "20-06-2025",
+    "22-06-2025",
+    "29-06-2025",
+    "06-07-2025",
+    "13-07-2025",
+    "16-07-2025",
+    "20-07-2025",
+    "27-07-2025",
+    "03-08-2025",
+    "04-08-2025",
+    "05-08-2025",
+    "06-08-2025",
+    "07-08-2025",
+    "08-08-2025",
+    "09-08-2025",
+    "10-08-2025",
+    "11-08-2025",
+    "12-08-2025",
+    "13-08-2025",
+    "14-08-2025",
+    "15-08-2025",
+    "16-08-2025",
+    "17-08-2025",
+    "18-08-2025",
+    "19-08-2025",
+    "20-08-2025",
+    "21-08-2025",
+    "22-08-2025",
+    "23-08-2025",
+    "24-08-2025",
+    "25-08-2025",
+    "26-08-2025",
+    "27-08-2025",
+    "28-08-2025",
+    "29-08-2025",
+    "30-08-2025",
+    "31-08-2025",
+    "01-09-2025",
+    "02-09-2025",
+    "03-09-2025",
+    "04-09-2025",
+    "05-09-2025",
+    "06-09-2025",
+    "07-09-2025",
+    "08-09-2025",
+    "09-09-2025",
+    "10-09-2025",
+    "11-09-2025",
+    "12-09-2025",
+    "13-09-2025",
+    "14-09-2025",
+    "15-09-2025",
+    "16-09-2025",
+    "17-09-2025",
+    "18-09-2025",
+    "19-09-2025",
+    "20-09-2025",
+    "21-09-2025",
+    "22-09-2025",
+    "23-09-2025",
+    "24-09-2025",
+    "25-09-2025",
+    "26-09-2025",
+    "27-09-2025",
+    "28-09-2025",
+    "29-09-2025",
+    "05-10-2025",
+    "12-10-2025",
+    "19-10-2025",
+    "26-10-2025",
+    "31-10-2025",
+    "01-11-2025",
+    "02-11-2025",
+    "09-11-2025",
+    "16-11-2025",
+    "23-11-2025",
+    "30-11-2025",
+    "07-12-2025",
+    "08-12-2025",
+    "14-12-2025",
+    "21-12-2025",
+    "25-12-2025",
+    "28-12-2025",
+    "01-01-2026",
+    "04-01-2026",
+    "11-01-2026",
+    "18-01-2026",
+    "19-01-2026",
+    "20-01-2026",
+    "21-01-2026",
+    "22-01-2026",
+    "23-01-2026",
+    "24-01-2026",
+    "25-01-2026",
+    "26-01-2026",
+    "27-01-2026",
+    "28-01-2026",
+    "29-01-2026",
+    "30-01-2026",
+    "31-01-2026",
+    "01-02-2026",
+    "02-02-2026",
+    "03-02-2026",
+    "04-02-2026",
+    "05-02-2026",
+    "06-02-2026",
+    "07-02-2026",
+    "08-02-2026",
+    "09-02-2026",
+    "10-02-2026",
+    "11-02-2026",
+    "12-02-2026",
+    "13-02-2026",
+    "14-02-2026",
+    "15-02-2026",
+    "16-02-2026",
+    "17-02-2026",
+    "18-02-2026",
+    "19-02-2026",
+    "20-02-2026",
+    "21-02-2026",
+    "22-02-2026",
+    "23-02-2026",
+    "24-02-2026",
+    "25-02-2026",
+    "26-02-2026",
+    "27-02-2026",
+    "28-02-2026",
+    "01-03-2026",
+    "08-03-2026",
+    "15-03-2026",
+    "22-03-2026",
+    "29-03-2026",
+    "03-04-2026",
+    "04-04-2026",
+    "05-04-2026",
+    "12-04-2026",
+    "16-04-2026"
+  ]
 }
