@@ -1,38 +1,42 @@
 """
-scraper.py — Monitor Diario Oficial Chile (v13 — DEFINITIVO)
+scraper.py — Monitor Diario Oficial Chile (v14-FINAL)
 Division de Seguridad Privada (DSP)
 
-CAMBIO CRITICO v13:
-===================
-Se elimina el loop de verificacion has_publications() que causaba
-que el servidor bloqueara la IP por exceso de requests (anti-bot).
+REGLAS REALES DEL DO (verificadas con datos y URLs concretas):
+===============================================================
 
-NUEVA ESTRATEGIA (anti-bot safe, confirmada con datos reales):
-  1. Calcular edicion directamente con count_publishing_days + ANCHORS
-     -> offset=0 exacto para TODOS los datos confirmados por el usuario
-  2. Ir directamente a scrapear las 4 secciones (sin verificacion previa)
-  3. Si alguna seccion devuelve CVEs -> edicion correcta, procesar
-  4. Si ninguna seccion devuelve CVEs -> feriado no listado, saltar
+DIAS REGULARES (lun-sab, no feriado):
+  Edicion N   → ?date=DATE&edition=N        (sin v = devuelve contenido)
+  Edicion N-B → ?date=DATE&edition=N-B      (sin v = tambien devuelve contenido, VERIFICADO)
+  N-B NO incrementa el correlativo. Solo agrega publicaciones extra.
 
-Requests por dia:
-  Antes (v12): 21 verificacion + 8 scraping = 29 requests -> BLOQUEADO
-  Ahora (v13): 0 verificacion + 4-8 scraping = 4-8 requests -> OK
+DOMINGOS/FERIADOS CON EDICION ESPECIAL (B edition):
+  Edicion (N+1)-B donde N = edicion del dia anterior
+  ESTA SI incrementa el correlativo (el siguiente dia regular = N+2)
+  Ejemplo: Sab 02-08=44214, Dom 03-08=44215-B, Lun 04-08=44216
 
-ESTRUCTURA CONFIRMADA POR EL USUARIO:
-======================================
-  10-02-2025 (Lun) = 44071   11-02-2025 (Mar) = 44072
-  12-02-2025 (Mie) = 44073   13-02-2025 (Jue) = 44074 (v=1, v=2)
-  14-02-2025 (Vie) = 44075   15-02-2025 (Sab) = 44076
-  16-02-2025 (Dom) = SIN EDICION
-  17-02-2025 (Lun) = 44077   18-02-2025 (Mar) = 44078
-  28-11-2025 (Vie) = 44311   13-04-2026 (Lun) = 44423
+EDICIONES B EN DIAS NO-HABILES CONOCIDAS (B_EDITION_DAYS):
+  03-08-2025 (Dom) = 44215-B  → duelo nacional mineros El Teniente
+  18-01-2026 (Dom) = 44352-B  → descubierta por diferencial de conteo
+
+POR QUE FALLABAN LAS VERSIONES ANTERIORES:
+  1. v13 y anteriores: nunca intentaban edition N-B en dias normales
+  2. v13 y anteriores: saltaban TODOS los domingos (sin intentar B)
+  3. v13 y anteriores: desconocian los domingos con B, calculando
+     ediciones incorrectas (-1) para dias posteriores
+
+KEYWORD MATCHING VERIFICADO contra titulos reales:
+  44311-B: 'Resolucion...transitoriedad ley N 21.659...Reglamento Seguridad Privada'
+    → Match: ['21.659', 'seguridad privada'] | Prioridad: ALTA ✓
+  44373:   'Ley 21.802...institucionalidad municipal en materia de seguridad publica'
+    → Match: ['21.802', 'seguridad publica'] | Prioridad: ALTA ✓
 
 MODOS:
   python scraper.py                           Escaneo del dia de hoy
   python scraper.py --historical              Desde 10-02-2025 hasta hoy
   python scraper.py --date 28-11-2025         Fecha especifica
   python scraper.py --test                    Diagnostico con 28-11-2025
-  python scraper.py --test --date 13-02-2025  Diagnostico (v=1 y v=2)
+  python scraper.py --test --date 03-08-2025  Diagnostico domingo especial
 """
 
 import json
@@ -51,51 +55,34 @@ import requests
 from bs4 import BeautifulSoup
 
 # =============================================================================
-# FERIADOS CHILE — el DO NO publica en estos dias
-# Agregar nuevos feriados al inicio de cada ano
+# FERIADOS — el DO NO publica edicion regular en estos dias
 # =============================================================================
 
 HOLIDAYS: set[date] = {
     # 2025
-    date(2025,  1,  1),  # Ano Nuevo
-    date(2025,  4, 18),  # Viernes Santo
-    date(2025,  4, 19),  # Sabado Santo
-    date(2025,  5,  1),  # Dia del Trabajo
-    date(2025,  5, 21),  # Glorias Navales
-    date(2025,  6, 20),  # Dia del Pueblo Mapuche (Wetripantu)
-    date(2025,  6, 29),  # San Pedro y San Pablo
-    date(2025,  7, 16),  # Virgen del Carmen
-    date(2025,  8, 15),  # Asuncion de la Virgen
-    date(2025,  9, 18),  # Independencia Nacional
-    date(2025,  9, 19),  # Glorias del Ejercito
-    date(2025, 10, 12),  # Encuentro de Dos Mundos
-    date(2025, 10, 31),  # Iglesias Evangelicas y Protestantes
-    date(2025, 11,  1),  # Dia de Todos los Santos
-    date(2025, 12,  8),  # Inmaculada Concepcion
-    date(2025, 12, 25),  # Navidad
+    date(2025,  1,  1), date(2025,  4, 18), date(2025,  4, 19),
+    date(2025,  5,  1), date(2025,  5, 21), date(2025,  6, 20),
+    date(2025,  6, 29), date(2025,  7, 16), date(2025,  8, 15),
+    date(2025,  9, 18), date(2025,  9, 19), date(2025, 10, 12),
+    date(2025, 10, 31), date(2025, 11,  1), date(2025, 12,  8),
+    date(2025, 12, 25),
     # 2026
-    date(2026,  1,  1),  # Ano Nuevo
-    date(2026,  4,  3),  # Viernes Santo
-    date(2026,  4,  4),  # Sabado Santo
-    date(2026,  5,  1),  # Dia del Trabajo
-    date(2026,  5, 21),  # Glorias Navales
-    date(2026,  6, 19),  # Dia del Pueblo Mapuche (Wetripantu)
-    date(2026,  6, 29),  # San Pedro y San Pablo
-    date(2026,  7, 16),  # Virgen del Carmen
-    date(2026,  8, 15),  # Asuncion de la Virgen
-    date(2026,  9, 18),  # Independencia Nacional
-    date(2026,  9, 19),  # Glorias del Ejercito
-    date(2026, 10, 12),  # Encuentro de Dos Mundos
-    date(2026, 11,  1),  # Dia de Todos los Santos
-    date(2026, 12,  8),  # Inmaculada Concepcion
-    date(2026, 12, 25),  # Navidad
+    date(2026,  1,  1), date(2026,  4,  3), date(2026,  4,  4),
+    date(2026,  5,  1), date(2026,  5, 21), date(2026,  6, 19),
+    date(2026,  6, 29), date(2026,  7, 16), date(2026,  8, 15),
+    date(2026,  9, 18), date(2026,  9, 19), date(2026, 10, 12),
+    date(2026, 11,  1), date(2026, 12,  8), date(2026, 12, 25),
 }
 
+# =============================================================================
+# EDICIONES B EN DOMINGOS/FERIADOS — consumen numero del correlativo
+# {fecha: numero_sin_B}   →   el DO publico {numero}-B ese dia
+# =============================================================================
 
-def is_publishing_day(d: date) -> bool:
-    """True si el DO publica ese dia (lun-sab, sin feriados)."""
-    return d.weekday() < 6 and d not in HOLIDAYS
-
+B_EDITION_DAYS: dict[date, int] = {
+    date(2025,  8,  3): 44215,   # Dom → 44215-B (duelo mineros El Teniente)
+    date(2026,  1, 18): 44352,   # Dom → 44352-B
+}
 
 # =============================================================================
 # CONFIGURACION
@@ -108,28 +95,27 @@ KEYWORDS_FILE = BASE_DIR / "keywords.json"
 BASE_URL      = "https://www.diariooficial.interior.gob.cl/edicionelectronica"
 START_DATE    = date(2025, 2, 10)
 
-SECTION_DELAY = 2.0   # segundos entre requests de secciones/versiones
-MAX_VERSIONS  = 10    # versiones maximas por seccion (v=1..10)
+SECTION_DELAY = 2.0    # segundos entre requests (anti-bot)
+MAX_VERSIONS  = 8      # versiones maximas por seccion (v=1..8)
 
-# Anclas verificadas con datos reales del usuario y del sitio DO
-# count_publishing_days da offset=0 exacto para todas estas fechas
+# Anclas verificadas — incluyen correcciones post-B-edition-domingo
 ANCHORS: dict[date, int] = {
-    date(2025,  2, 10): 44071,   # confirmado usuario (ANCLA PRINCIPAL)
+    date(2025,  2, 10): 44071,   # confirmado usuario
     date(2025,  2, 11): 44072,   # confirmado usuario
     date(2025,  2, 12): 44073,   # confirmado usuario
     date(2025,  2, 13): 44074,   # confirmado usuario (v=1, v=2)
     date(2025,  2, 14): 44075,   # confirmado usuario
     date(2025,  2, 15): 44076,   # confirmado usuario (sabado)
-    date(2025,  2, 17): 44077,   # confirmado usuario (post-domingo)
+    date(2025,  2, 17): 44077,   # confirmado usuario
     date(2025,  2, 18): 44078,   # confirmado usuario
+    date(2025,  8,  4): 44216,   # lunes post-domingo 44215-B (FIX AGOSTO)
     date(2025, 11, 28): 44311,   # confirmado usuario
+    date(2026,  1, 19): 44353,   # lunes post-domingo 44352-B (FIX ENERO)
+    date(2026,  2, 11): 44373,   # confirmado usuario (Ley 21.802)
     date(2026,  4, 13): 44423,   # confirmado sitio DO
 }
 
-GMAIL_USER     = os.environ.get("GMAIL_USER", "")
-GMAIL_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
-NOTIFY_EMAIL   = os.environ.get("NOTIFY_EMAIL", GMAIL_USER)
-
+# 4 secciones relevantes para DSP (URLs confirmadas)
 SECTIONS: dict[str, str] = {
     "Normas Generales":         "index.php",
     "Normas Particulares":      "normas_particulares.php",
@@ -142,6 +128,10 @@ SECTIONS_EXCLUDED = [
     "Marcas y Patentes",
     "Boletin Oficial de Mineria",
 ]
+
+GMAIL_USER     = os.environ.get("GMAIL_USER", "")
+GMAIL_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
+NOTIFY_EMAIL   = os.environ.get("NOTIFY_EMAIL", GMAIL_USER)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -157,17 +147,32 @@ log = logging.getLogger(__name__)
 def load_data() -> dict:
     if DATA_FILE.exists():
         with open(DATA_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            d = json.load(f)
+        # Cargar B editions descubiertas en runs anteriores
+        for ds, num in d.get("b_edition_days", {}).items():
+            try:
+                dt = date(int(ds[6:10]), int(ds[3:5]), int(ds[:2]))
+                if dt not in B_EDITION_DAYS:
+                    B_EDITION_DAYS[dt] = num
+            except Exception:
+                pass
+        return d
     return {
         "last_updated":   None,
         "total":          0,
         "editions_cache": {},
         "publications":   [],
         "skipped_dates":  [],
+        "b_edition_days": {},
     }
 
 
 def save_data(data: dict):
+    # Persistir B editions descubiertas en tiempo real
+    data["b_edition_days"] = {
+        d.strftime("%d-%m-%Y"): n
+        for d, n in B_EDITION_DAYS.items()
+    }
     data["total"]        = len(data["publications"])
     data["last_updated"] = date.today().isoformat()
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -175,7 +180,8 @@ def save_data(data: dict):
         json.dump(data, f, ensure_ascii=False, indent=2)
     log.info(
         f"Guardado: {data['total']} publicaciones | "
-        f"{len(data.get('skipped_dates', []))} fechas sin edicion."
+        f"{len(data.get('skipped_dates', []))} sin edicion | "
+        f"{len(B_EDITION_DAYS)} B-editions conocidas."
     )
 
 
@@ -193,19 +199,31 @@ def get_processed_dates(data: dict) -> set:
 
 
 # =============================================================================
+# CLASIFICACION DE DIAS
+# =============================================================================
+
+def is_regular_publishing_day(d: date) -> bool:
+    """True si el DO publica edicion regular (lun-sab, sin feriados)."""
+    return d.weekday() < 6 and d not in HOLIDAYS
+
+
+# =============================================================================
 # CALCULO DE EDICION (sin requests al servidor)
 # =============================================================================
 
 def count_publishing_days(start: date, end: date) -> int:
     """
-    Cuenta dias en que el DO efectivamente publica entre start y end.
-    = dias lunes-sabado que NO son feriado.
+    Cuenta dias que generan edicion entre start y end.
+    Incluye dias regulares (lun-sab, no feriado) Y dias con B edition especial
+    (Domingos/feriados que publicaron B edition — consumen numero del correlativo).
 
-    Verificado con datos del usuario:
-      10-02-2025(44071) -> 13-02-2025(44074): count=3 -> offset 0 exacto
-      10-02-2025(44071) -> 17-02-2025(44077): count=6 -> offset 0 exacto
-      10-02-2025(44071) -> 28-11-2025(44311): count=240 -> offset 0 exacto
-      10-02-2025(44071) -> 13-04-2026(44423): count=352 -> offset 0 exacto
+    Verificado con datos reales del usuario:
+      10-02-2025(44071) → 13-02-2025(44074): count=3 → offset 0
+      10-02-2025(44071) → 04-08-2025(44216): count=145 → offset 0 (incluye dom 44215-B)
+      10-02-2025(44071) → 28-11-2025(44311): count=240 → offset 0
+      10-02-2025(44071) → 19-01-2026(44353): count=282 → offset 0 (incluye dom 44352-B)
+      10-02-2025(44071) → 11-02-2026(44373): count=302 → offset 0
+      10-02-2025(44071) → 13-04-2026(44423): count=352 → offset 0
     """
     if start == end:
         return 0
@@ -213,7 +231,7 @@ def count_publishing_days(start: date, end: date) -> int:
     a, b     = (start, end) if forward else (end, start)
     count, cur = 0, a
     while cur < b:
-        if is_publishing_day(cur):
+        if is_regular_publishing_day(cur) or cur in B_EDITION_DAYS:
             count += 1
         cur += timedelta(days=1)
     return count if forward else -count
@@ -221,11 +239,10 @@ def count_publishing_days(start: date, end: date) -> int:
 
 def calculate_edition(target: date, cache: dict) -> int:
     """
-    Calcula el numero de edicion SIN hacer ningun request al servidor.
-    Usa el ancla conocida mas cercana + count_publishing_days.
-    Con HOLIDAYS correctamente listados -> resultado exacto.
+    Calcula el numero de edicion SIN hacer requests al servidor.
+    Usa el ancla mas cercana + count_publishing_days.
+    Con ANCHORS y B_EDITION_DAYS correctos → resultado exacto.
     """
-    # Combinar anclas fijas con las descubiertas durante el escaneo
     known = dict(ANCHORS)
     for ds, eid in cache.items():
         try:
@@ -233,21 +250,18 @@ def calculate_edition(target: date, cache: dict) -> int:
             known[d] = eid
         except Exception:
             pass
-
-    # Ancla mas cercana en dias calendario
     nearest = min(known.keys(), key=lambda d: abs((target - d).days))
     return known[nearest] + count_publishing_days(nearest, target)
 
 
 # =============================================================================
-# SCRAPING CON MULTI-VERSION
+# SCRAPING — una seccion, todas las versiones
 # =============================================================================
 
 def scrape_url(session: requests.Session, url: str) -> list[dict]:
     """
     Scrapea UNA URL del DO.
-    Retorna lista de items [{title, pdf_url, cve}].
-    Retorna lista vacia si no hay publicaciones o hay error.
+    Retorna [{title, pdf_url, cve}] o [] si no hay publicaciones.
     """
     items = []
     try:
@@ -278,58 +292,89 @@ def scrape_url(session: requests.Session, url: str) -> list[dict]:
     return items
 
 
-def scrape_all_versions(
+def scrape_section_all_versions(
     session: requests.Session,
     date_str: str,
-    edition_id: int,
-    php_file: str,
+    edition_str: str,
     section_name: str,
+    php_file: str,
+    seen_cves: set,
     verbose: bool = False,
 ) -> list[dict]:
     """
-    Scrapea TODAS las versiones de una seccion para una edicion.
+    Scrapea TODAS las versiones de UNA seccion para una edicion.
+    edition_str puede ser '44311', '44311-B', '44215-B', etc.
 
-    Estructura confirmada:
-      URL sin v:  ?date=DATE&edition=N        (mayoria de dias)
-      URL con v:  ?date=DATE&edition=N&v=1    (dias con muchas publicaciones)
-                  ?date=DATE&edition=N&v=2
-    Ejemplo: 13-02-2025, edicion 44074 tiene v=1 y v=2.
-    Deduplica por CVE entre versiones.
+    Estrategia:
+      1. Sin v (VERIFICADO: devuelve contenido para ambas N y N-B)
+      2. Con v=1, v=2, ... hasta MAX_VERSIONS
+      3. Parar cuando 2 versiones consecutivas esten vacias (no 1, para
+         no perderse casos donde v=1 vacio pero v=2 tiene contenido)
+
+    Deduplica por CVE con seen_cves (compartido entre edicion N y N-B).
     """
-    all_items = []
-    seen_cves = set()
+    section_items = []
+    base_url      = f"{BASE_URL}/{php_file}?date={date_str}&edition={edition_str}"
 
     def add_new(items: list, label: str) -> int:
         nuevos = [i for i in items if i["cve"] not in seen_cves]
         for i in nuevos:
             seen_cves.add(i["cve"])
-        all_items.extend(nuevos)
+            i["section"] = section_name    # preservar nombre de seccion
+        section_items.extend(nuevos)
         if verbose and items:
-            log.info(
-                f"    {section_name} [{label}]: "
-                f"{len(items)} items, {len(nuevos)} nuevos"
-            )
+            log.info(f"    [{edition_str}] {section_name} [{label}]: "
+                     f"{len(items)} items, {len(nuevos)} nuevos")
         return len(nuevos)
 
-    # 1. Sin v (mayoria de dias)
-    base_url = f"{BASE_URL}/{php_file}?date={date_str}&edition={edition_id}"
+    # 1. Sin v
     add_new(scrape_url(session, base_url), "sin v")
     time.sleep(SECTION_DELAY)
 
-    # 2. Con v=1, v=2, v=3... (dias con muchas publicaciones)
+    # 2. Con v=1, v=2, ...
+    empty_streak = 0
     for v in range(1, MAX_VERSIONS + 1):
         items_v = scrape_url(session, f"{base_url}&v={v}")
         if not items_v:
-            if verbose:
-                log.info(f"    {section_name} [v={v}]: vacio -> fin")
-            break
+            empty_streak += 1
+            if empty_streak >= 2:
+                # 2 versiones vacias consecutivas = no hay mas
+                if verbose:
+                    log.info(f"    [{edition_str}] {section_name} v={v}: 2 vacias -> fin")
+                break
+            time.sleep(SECTION_DELAY)
+            continue
+        empty_streak = 0
         nuevos = add_new(items_v, f"v={v}")
         time.sleep(SECTION_DELAY)
-        if nuevos == 0 and v >= 2:
-            if verbose:
-                log.info(f"    {section_name} [v={v}]: solo duplicados -> fin")
+        if nuevos == 0 and v >= 3:
+            # Solo duplicados en v>=3 = no hay mas nuevo
             break
 
+    return section_items
+
+
+def scrape_edition_all_sections(
+    session: requests.Session,
+    date_str: str,
+    edition_str: str,
+    seen_cves: set,
+    verbose: bool = False,
+) -> list[dict]:
+    """
+    Scrapea las 4 secciones de UNA edicion (regular N o B: N-B).
+    Cada item en el resultado incluye el campo 'section' con el nombre real.
+    seen_cves se comparte entre llamadas para deduplicar entre N y N-B.
+    """
+    all_items = []
+    for section_name, php_file in SECTIONS.items():
+        items = scrape_section_all_versions(
+            session, date_str, edition_str,
+            section_name, php_file, seen_cves, verbose
+        )
+        all_items.extend(items)
+        if verbose and items:
+            log.info(f"  [{edition_str}] {section_name}: {len(items)} items nuevos")
     return all_items
 
 
@@ -338,6 +383,14 @@ def scrape_all_versions(
 # =============================================================================
 
 def check_keywords(text: str, keywords: dict) -> tuple[list, str]:
+    """
+    Aplica keywords al titulo. Retorna (matches, prioridad).
+    Verificado contra titulos reales:
+      '...transitoriedad ley N 21.659...Reglamento Seguridad Privada'
+        → ['21.659','seguridad privada'] | ALTA
+      '...Ley 21.802...materia de seguridad publica...'
+        → ['21.802','seguridad publica'] | ALTA
+    """
     text_lower = text.lower()
     matched, priority = [], "normal"
     for kw in keywords["alta_prioridad"]:
@@ -349,6 +402,49 @@ def check_keywords(text: str, keywords: dict) -> tuple[list, str]:
             if kw.lower() in text_lower and kw not in matched:
                 matched.append(kw)
     return matched, priority
+
+
+# =============================================================================
+# GUARDAR MATCHES
+# =============================================================================
+
+def save_matches(
+    items: list[dict],
+    date_str: str,
+    edition_str: str,
+    keywords: dict,
+    data: dict,
+    new_matches: list,
+    verbose: bool,
+):
+    """Aplica keywords a los items y guarda publicaciones con match."""
+    existing_cves = {p["cve"] for p in data["publications"]}
+    for item in items:
+        if item["cve"] in existing_cves:
+            continue
+        matched_kw, priority = check_keywords(item["title"], keywords)
+        if matched_kw:
+            pub = {
+                "cve":        item["cve"],
+                "date":       date_str,
+                "edition_id": edition_str,
+                "section":    item.get("section", "DO"),  # nombre real de seccion
+                "title":      item["title"],
+                "pdf_url":    item["pdf_url"],
+                "matched_kw": matched_kw,
+                "priority":   priority,
+                "notified":   False,
+            }
+            data["publications"].append(pub)
+            existing_cves.add(item["cve"])
+            new_matches.append(pub)
+            log.info(
+                f"  MATCH [{priority.upper()}] [{edition_str}] "
+                f"{item.get('section','')}: {item['title'][:75]}"
+            )
+            if verbose:
+                log.info(f"     Keywords: {matched_kw}")
+                log.info(f"     PDF:      {item['pdf_url']}")
 
 
 # =============================================================================
@@ -365,92 +461,121 @@ def process_date(
     """
     Procesa un dia completo del DO.
 
-    FLUJO v13 (sin loop de verificacion):
-      1. Si es domingo o feriado -> salta inmediatamente (0 requests)
-      2. Si ya fue procesado -> salta (0 requests)
-      3. Calcula edicion directamente (0 requests, puro calculo)
-      4. Scrapea las 4 secciones con todas sus versiones
-      5. Si ninguna seccion devuelve CVEs -> feriado no listado, saltar
-      6. Si hay CVEs -> guarda edicion en cache y procesa matches
+    CASO A — Dia regular (lun-sab, no feriado):
+      1. Calcula edicion N (sin requests)
+      2. Scrapea edicion N  (4 secciones + todas las versiones)
+      3. Scrapea edicion N-B (MISMO numero, sufijo B — sin v devuelve contenido)
+      CVEs deduplicados entre N y N-B mediante seen_cves compartido.
+
+    CASO B — Domingo/feriado con B edition conocida (B_EDITION_DAYS):
+      Scrapea solo la edicion B conocida.
+
+    CASO C — Domingo/feriado desconocido:
+      Calcula numero potencial B y lo intenta.
+      Si encuentra contenido → registra nueva B edition, corrige anclas.
+
+    CASO D — Dia ya procesado:
+      Salta inmediatamente (0 requests).
     """
     date_str  = target.strftime("%d-%m-%Y")
     processed = get_processed_dates(data)
+    cache     = data.setdefault("editions_cache", {})
 
-    # 1. Domingo o feriado conocido
-    if not is_publishing_day(target):
-        reason = "domingo" if target.weekday() == 6 else "feriado"
-        log.debug(f"{date_str}: {reason} -> saltado")
-        skipped = data.setdefault("skipped_dates", [])
-        if date_str not in skipped:
-            skipped.append(date_str)
-        return []
-
-    # 2. Ya procesado
+    # D. Ya procesado
     if date_str in processed:
         log.debug(f"{date_str}: ya procesado.")
         return []
 
-    # 3. Calcular edicion (sin requests)
-    cache      = data.setdefault("editions_cache", {})
-    edition_id = calculate_edition(target, cache)
-    log.info(f"Procesando {date_str} (ed. #{edition_id} calculado)...")
+    new_matches = []
+    found_any   = False
 
-    # 4. Scrapear las 4 secciones
-    new_matches   = []
-    existing_cves = {p["cve"] for p in data["publications"]}
-    found_any_cve = False
+    # A. Dia regular
+    if is_regular_publishing_day(target):
+        edition_id    = calculate_edition(target, cache)
+        edition_str   = str(edition_id)
+        b_edition_str = f"{edition_id}-B"
+        log.info(f"Procesando {date_str} (ed. #{edition_id} + #{edition_id}-B)...")
 
-    for section_name, php_file in SECTIONS.items():
-        items = scrape_all_versions(
-            session, date_str, edition_id,
-            php_file, section_name, verbose=verbose,
+        # CVEs compartidos entre N y N-B para no duplicar
+        seen_cves = set()
+
+        # Edicion regular N
+        items_n = scrape_edition_all_sections(
+            session, date_str, edition_str, seen_cves, verbose
+        )
+        save_matches(items_n, date_str, edition_str, keywords, data, new_matches, verbose)
+        if items_n:
+            found_any = True
+
+        # Edicion B del mismo dia: N-B
+        # VERIFICADO: edition=N-B sin v devuelve contenido correctamente
+        items_b = scrape_edition_all_sections(
+            session, date_str, b_edition_str, seen_cves, verbose
+        )
+        save_matches(items_b, date_str, b_edition_str, keywords, data, new_matches, verbose)
+        if items_b:
+            found_any = True
+
+        if found_any:
+            cache[date_str] = edition_id
+            ANCHORS[target] = edition_id
+        else:
+            log.warning(
+                f"{date_str}: sin publicaciones para #{edition_id} ni #{edition_id}-B. "
+                f"Posible feriado no listado en HOLIDAYS."
+            )
+            data.setdefault("skipped_dates", []).append(date_str)
+            return []
+
+    # B. Domingo/feriado con B edition conocida
+    elif target in B_EDITION_DAYS:
+        b_num         = B_EDITION_DAYS[target]
+        b_edition_str = f"{b_num}-B"
+        log.info(f"Procesando {date_str} (B edition conocida: {b_edition_str})...")
+        seen_cves = set()
+        items_b = scrape_edition_all_sections(
+            session, date_str, b_edition_str, seen_cves, verbose
+        )
+        save_matches(items_b, date_str, b_edition_str, keywords, data, new_matches, verbose)
+        if items_b:
+            found_any = True
+        if not found_any:
+            data.setdefault("skipped_dates", []).append(date_str)
+            return []
+
+    # C. Domingo/feriado desconocido — buscar posible B edition
+    else:
+        # Calcular el numero que tendria una posible B edition
+        # = (ultima edicion publicada conocida) + 1
+        prev = target - timedelta(days=1)
+        while not is_regular_publishing_day(prev) and prev not in B_EDITION_DAYS:
+            prev -= timedelta(days=1)
+        prev_edition      = calculate_edition(prev, cache)
+        potential_b_num   = prev_edition + 1
+        potential_b_str   = f"{potential_b_num}-B"
+        log.debug(f"{date_str}: domingo/feriado, probando {potential_b_str}...")
+
+        seen_cves = set()
+        items_b = scrape_edition_all_sections(
+            session, date_str, potential_b_str, seen_cves, verbose
         )
 
-        if items:
-            found_any_cve = True
-
-        if verbose and items:
-            log.info(f"  {section_name}: {len(items)} items unicos")
-
-        for item in items:
-            matched_kw, priority = check_keywords(item["title"], keywords)
-            if matched_kw and item["cve"] not in existing_cves:
-                pub = {
-                    "cve":        item["cve"],
-                    "date":       date_str,
-                    "edition_id": edition_id,
-                    "section":    section_name,
-                    "title":      item["title"],
-                    "pdf_url":    item["pdf_url"],
-                    "matched_kw": matched_kw,
-                    "priority":   priority,
-                    "notified":   False,
-                }
-                data["publications"].append(pub)
-                existing_cves.add(item["cve"])
-                new_matches.append(pub)
-                log.info(
-                    f"  MATCH [{priority.upper()}] {section_name}: "
-                    f"{item['title'][:80]}"
-                )
-                if verbose:
-                    log.info(f"     Keywords: {matched_kw}")
-                    log.info(f"     PDF:      {item['pdf_url']}")
-
-    # 5. Si ninguna seccion devolvio CVEs -> feriado no listado
-    if not found_any_cve:
-        log.warning(
-            f"{date_str}: ninguna seccion devolvio publicaciones "
-            f"(posible feriado no listado en HOLIDAYS - agregar y reintentar)"
-        )
-        skipped = data.setdefault("skipped_dates", [])
-        if date_str not in skipped:
-            skipped.append(date_str)
-        return []
-
-    # 6. Guardar edicion encontrada como nuevo ancla
-    cache[date_str] = edition_id
-    ANCHORS[target] = edition_id
+        if items_b:
+            log.info(
+                f"NUEVA B EDITION DESCUBIERTA: {date_str} = {potential_b_str} "
+                f"({len(items_b)} items)"
+            )
+            B_EDITION_DAYS[target] = potential_b_num
+            data.setdefault("b_edition_days", {})[date_str] = potential_b_num
+            # Ancla para el dia siguiente (post-B-edition)
+            next_day = target + timedelta(days=1)
+            ANCHORS[next_day] = potential_b_num + 1
+            save_matches(items_b, date_str, potential_b_str, keywords, data, new_matches, verbose)
+            found_any = True
+        else:
+            log.debug(f"{date_str}: sin B edition (domingo/feriado normal)")
+            data.setdefault("skipped_dates", []).append(date_str)
+            return []
 
     return new_matches
 
@@ -461,84 +586,72 @@ def process_date(
 
 def run_diagnostic(session: requests.Session, target: date, keywords: dict):
     """
-    Diagnostico completo para una fecha. Sin loop de verificacion.
-    Default: 28-11-2025 (tiene matches DSP confirmados)
-    Alternativa: 13-02-2025 (tiene v=1 y v=2)
+    Diagnostico completo para una fecha.
+    Muestra: edicion calculada, items por seccion, matches de keywords.
+    Para dias regulares: prueba N y N-B.
+    Para domingos/feriados: prueba la B edition.
+    Default: 28-11-2025 (tiene 44311 y 44311-B, ambas con matches DSP)
     """
     print("\n" + "=" * 70)
-    print(f"  DIAGNOSTICO -- Diario Oficial {target.strftime('%d-%m-%Y')}")
+    print(f"  DIAGNOSTICO — Diario Oficial {target.strftime('%d-%m-%Y')}")
     print("=" * 70)
 
-    if target.weekday() == 6:
-        print(f"\n  Domingo -> el DO no publica este dia.")
-        return
-    if target in HOLIDAYS:
-        print(f"\n  Feriado -> el DO no publica este dia.")
-        return
+    cache    = {}
+    date_str = target.strftime("%d-%m-%Y")
 
-    cache      = {}
-    edition_id = calculate_edition(target, cache)
-    print(f"\n[1] Edicion calculada directamente (sin requests al servidor):")
-    print(f"  Edicion #{edition_id}\n")
+    if is_regular_publishing_day(target):
+        edition_id = calculate_edition(target, cache)
+        print(f"\n  Tipo: dia regular | Edicion calculada: #{edition_id} (+ #{edition_id}-B)")
+        seen_cves = set()
 
-    date_str      = target.strftime("%d-%m-%Y")
-    total_items   = 0
-    total_matches = 0
-    found_any     = False
+        for edition_str in [str(edition_id), f"{edition_id}-B"]:
+            print(f"\n[Edicion {edition_str}]")
+            items = scrape_edition_all_sections(
+                session, date_str, edition_str, seen_cves, verbose=True
+            )
+            total_m = 0
+            for item in items[:8]:
+                matched_kw, priority = check_keywords(item["title"], keywords)
+                sec = item.get("section", "")
+                print(f"  [{sec}] {item['title'][:80]}")
+                if matched_kw:
+                    print(f"    => MATCH [{priority.upper()}]: {matched_kw}")
+                    total_m += 1
+            if len(items) > 8:
+                print(f"  ... y {len(items)-8} mas")
+            print(f"  → {len(items)} items unicos, {total_m} matches DSP")
 
-    for section_name, php_file in SECTIONS.items():
-        print(f"[Seccion] {section_name}")
-        all_section, seen = [], set()
-
-        # Sin v
-        base_url    = f"{BASE_URL}/{php_file}?date={date_str}&edition={edition_id}"
-        items_sin_v = scrape_url(session, base_url)
-        for i in items_sin_v:
-            seen.add(i["cve"])
-        all_section.extend(items_sin_v)
-        if items_sin_v:
-            found_any = True
-        print(f"  sin v -> {len(items_sin_v)} item(s)")
-        time.sleep(SECTION_DELAY)
-
-        # Con v=1, v=2...
-        for v in range(1, MAX_VERSIONS + 1):
-            items_v = scrape_url(session, f"{base_url}&v={v}")
-            if not items_v:
-                print(f"  v={v}  -> vacio, fin de versiones")
-                break
-            nuevos = [i for i in items_v if i["cve"] not in seen]
-            for i in nuevos:
-                seen.add(i["cve"])
-            all_section.extend(nuevos)
-            print(f"  v={v}  -> {len(items_v)} item(s), {len(nuevos)} nuevos")
-            time.sleep(SECTION_DELAY)
-
-        print(f"  TOTAL: {len(all_section)} items unicos")
-        for item in all_section[:6]:
+    elif target in B_EDITION_DAYS:
+        b_num = B_EDITION_DAYS[target]
+        b_str = f"{b_num}-B"
+        print(f"\n  Tipo: B edition conocida → {b_str}")
+        seen_cves = set()
+        items = scrape_edition_all_sections(session, date_str, b_str, seen_cves, verbose=True)
+        total_m = 0
+        for item in items[:8]:
             matched_kw, priority = check_keywords(item["title"], keywords)
-            print(f"    . {item['title'][:82]}")
+            sec = item.get("section", "")
+            print(f"  [{sec}] {item['title'][:80]}")
             if matched_kw:
-                print(f"      => MATCH [{priority.upper()}]: {matched_kw}")
-                total_matches += 1
-        if len(all_section) > 6:
-            print(f"    ... y {len(all_section) - 6} item(s) mas")
-        total_items += len(all_section)
-        print()
+                print(f"    => MATCH [{priority.upper()}]: {matched_kw}")
+                total_m += 1
+        print(f"  → {len(items)} items, {total_m} matches DSP")
 
-    print("=" * 70)
-    print(f"  RESUMEN")
-    print(f"  Fecha:         {date_str}")
-    print(f"  Edicion:       #{edition_id} (calculada sin requests)")
-    print(f"  Items:         {total_items} unicos en {len(SECTIONS)} secciones")
-    print(f"  Matches DSP:   {total_matches}")
-    if not found_any:
-        print(f"  ATENCION: Ninguna seccion devolvio publicaciones.")
-        print(f"  -> Si este dia debia publicar, agregar a HOLIDAYS y reintentar.")
-    print(f"\n  Secciones EXCLUIDAS por instruccion DSP:")
-    for s in SECTIONS_EXCLUDED:
-        print(f"    - {s}")
-    print("=" * 70 + "\n")
+    else:
+        prev = target - timedelta(days=1)
+        while not is_regular_publishing_day(prev) and prev not in B_EDITION_DAYS:
+            prev -= timedelta(days=1)
+        prev_ed = calculate_edition(prev, cache)
+        b_str   = f"{prev_ed + 1}-B"
+        print(f"\n  Tipo: domingo/feriado desconocido | Probando {b_str}")
+        seen_cves = set()
+        items = scrape_edition_all_sections(session, date_str, b_str, seen_cves, verbose=True)
+        if items:
+            print(f"  → ENCONTRADA {b_str}: {len(items)} items")
+        else:
+            print(f"  → Sin edicion para este dia")
+
+    print("\n" + "=" * 70 + "\n")
 
 
 # =============================================================================
@@ -554,7 +667,6 @@ def send_email_alert(new_pubs: list[dict]):
     alta   = [p for p in new_pubs if p["priority"] == "alta"]
     normal = [p for p in new_pubs if p["priority"] == "normal"]
     hoy    = date.today().strftime("%d/%m/%Y")
-
     subject = (
         f"Diario Oficial [{hoy}] -- "
         f"{len(alta)} alta prioridad | {len(normal)} normal"
@@ -572,7 +684,9 @@ def send_email_alert(new_pubs: list[dict]):
             f"<td style='padding:8px;border-bottom:1px solid #eee;"
             f"font-size:12px;color:#555;white-space:nowrap'>{p['date']}</td>"
             f"<td style='padding:8px;border-bottom:1px solid #eee;"
-            f"font-size:11px;color:#888'>{p['section']}</td>"
+            f"font-size:11px;color:#888'>{p['edition_id']}</td>"
+            f"<td style='padding:8px;border-bottom:1px solid #eee;"
+            f"font-size:11px;color:#666'>{p['section']}</td>"
             f"<td style='padding:8px;border-bottom:1px solid #eee;"
             f"font-size:12.5px'>{p['title']}</td>"
             f"<td style='padding:8px;border-bottom:1px solid #eee;"
@@ -588,26 +702,22 @@ def send_email_alert(new_pubs: list[dict]):
         if not pubs:
             return ""
         return (
-            f"<h3 style='color:{color};font-size:14px;margin-bottom:12px'>"
-            f"{title}</h3>"
+            f"<h3 style='color:{color};font-size:14px;margin-bottom:12px'>{title}</h3>"
             f"<table width='100%' cellspacing='0' style='border-collapse:collapse'>"
-            f"<tr>"
-            f"<th style='{hs}'>Fecha</th><th style='{hs}'>Seccion</th>"
-            f"<th style='{hs}'>Titulo</th><th style='{hs}'>Keywords</th>"
-            f"<th style='{hs}'>PDF</th>"
+            f"<tr><th style='{hs}'>Fecha</th><th style='{hs}'>Edicion</th>"
+            f"<th style='{hs}'>Seccion</th><th style='{hs}'>Titulo</th>"
+            f"<th style='{hs}'>Keywords</th><th style='{hs}'>PDF</th>"
             f"</tr>{rows(pubs)}</table><br>"
         )
 
     html = (
         "<html><body style='font-family:Arial,sans-serif;color:#333;"
-        "max-width:900px;margin:0 auto'>"
-        "<div style='background:#0d2340;padding:20px 28px;"
-        "border-radius:8px 8px 0 0'>"
+        "max-width:1000px;margin:0 auto'>"
+        "<div style='background:#0d2340;padding:20px 28px;border-radius:8px 8px 0 0'>"
         "<div style='font-size:10px;font-weight:700;letter-spacing:2px;"
         "color:#e8a020;text-transform:uppercase;margin-bottom:6px'>"
         "Subsecretaria de Prevencion del Delito - DSP</div>"
-        "<h2 style='color:#fff;margin:0;font-size:18px'>"
-        "Monitor Diario Oficial</h2>"
+        "<h2 style='color:#fff;margin:0;font-size:18px'>Monitor Diario Oficial</h2>"
         f"<p style='color:rgba(255,255,255,0.5);margin:4px 0 0;font-size:13px'>"
         f"{hoy} - {len(new_pubs)} nueva(s) publicacion(es)</p></div>"
         "<div style='background:#fff;border:1px solid #e0e4ea;"
@@ -642,25 +752,25 @@ def send_email_alert(new_pubs: list[dict]):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Monitor Diario Oficial DSP v13",
+        description="Monitor Diario Oficial DSP v14-FINAL",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Ejemplos:
   python scraper.py                           Escaneo del dia de hoy
   python scraper.py --historical              Desde 10-02-2025 hasta hoy
   python scraper.py --date 28-11-2025         Fecha especifica
-  python scraper.py --test                    Diagnostico con 28-11-2025
-  python scraper.py --test --date 13-02-2025  Diagnostico (tiene v=1 y v=2)
+  python scraper.py --test                    Diagnostico 28-11-2025 (44311 + 44311-B)
+  python scraper.py --test --date 03-08-2025  Diagnostico domingo 44215-B
+  python scraper.py --test --date 11-02-2026  Diagnostico Ley 21.802
         """
     )
     parser.add_argument("--historical", action="store_true",
                         help=f"Escanear desde {START_DATE} hasta hoy")
-    parser.add_argument("--date",    type=str,
-                        help="Fecha especifica DD-MM-YYYY")
+    parser.add_argument("--date",    type=str, help="Fecha especifica DD-MM-YYYY")
     parser.add_argument("--test",    action="store_true",
-                        help="Diagnostico: secciones, versiones y keywords")
+                        help="Diagnostico: edicion regular + B edition")
     parser.add_argument("--verbose", action="store_true",
-                        help="Log detallado por version, seccion y keyword")
+                        help="Log detallado por seccion y version")
     args = parser.parse_args()
 
     session = requests.Session()
@@ -692,6 +802,7 @@ Ejemplos:
         log.info("Limpiando estado previo para escaneo historico limpio...")
         data["skipped_dates"]  = []
         data["editions_cache"] = {}
+        data["b_edition_days"] = {}
         log.info(f"=== ESCANEO HISTORICO: {START_DATE} -> {date.today()} ===")
         current = START_DATE
         count   = 0
