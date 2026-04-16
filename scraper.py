@@ -95,8 +95,8 @@ KEYWORDS_FILE = BASE_DIR / "keywords.json"
 BASE_URL      = "https://www.diariooficial.interior.gob.cl/edicionelectronica"
 START_DATE    = date(2025, 2, 10)
 
-SECTION_DELAY = 2.0    # segundos entre requests (anti-bot)
-MAX_VERSIONS  = 8      # versiones maximas por seccion (v=1..8)
+SECTION_DELAY = 0.8    # segundos entre requests (anti-bot safe, verificado)
+MAX_VERSIONS  = 3      # versiones maximas por seccion (maximo observado: v=2)
 
 # Anclas verificadas — incluyen correcciones post-B-edition-domingo
 ANCHORS: dict[date, int] = {
@@ -331,27 +331,48 @@ def scrape_section_all_versions(
     add_new(scrape_url(session, base_url), "sin v")
     time.sleep(SECTION_DELAY)
 
-    # 2. Con v=1, v=2, ...
-    empty_streak = 0
+    # 2. Con v=1, v=2, v=3...
+    # El servidor puede devolver la misma pagina con distinto v (todos duplicados)
+    # o pagina vacia. En ambos casos, 0 items nuevos = no hay mas contenido.
     for v in range(1, MAX_VERSIONS + 1):
         items_v = scrape_url(session, f"{base_url}&v={v}")
-        if not items_v:
-            empty_streak += 1
-            if empty_streak >= 2:
-                # 2 versiones vacias consecutivas = no hay mas
-                if verbose:
-                    log.info(f"    [{edition_str}] {section_name} v={v}: 2 vacias -> fin")
-                break
-            time.sleep(SECTION_DELAY)
-            continue
-        empty_streak = 0
-        nuevos = add_new(items_v, f"v={v}")
+        nuevos  = add_new(items_v, f"v={v}")
         time.sleep(SECTION_DELAY)
-        if nuevos == 0 and v >= 3:
-            # Solo duplicados en v>=3 = no hay mas nuevo
+        if nuevos == 0:
+            # Sin items nuevos (ya sea pagina vacia o duplicados) = fin
+            if verbose:
+                log.info(f"    [{edition_str}] {section_name} v={v}: sin nuevos -> fin")
             break
 
     return section_items
+
+
+def scrape_edition_no_versions(
+    session: requests.Session,
+    date_str: str,
+    edition_str: str,
+    seen_cves: set,
+    verbose: bool = False,
+) -> list[dict]:
+    """
+    Scrapea las 4 secciones de una edicion SIN intentar versiones (v=1,2...).
+    Usado para ediciones N-B en dias regulares:
+      VERIFICADO que ?date=DATE&edition=N-B sin v devuelve contenido completo.
+    Esto reduce requests de 4×(1+MAX_VERSIONS) a solo 4 (uno por seccion).
+    """
+    all_items = []
+    for section_name, php_file in SECTIONS.items():
+        url   = f"{BASE_URL}/{php_file}?date={date_str}&edition={edition_str}"
+        items = scrape_url(session, url)
+        nuevos = [i for i in items if i["cve"] not in seen_cves]
+        for i in nuevos:
+            seen_cves.add(i["cve"])
+            i["section"] = section_name
+        all_items.extend(nuevos)
+        if verbose and items:
+            log.info(f"    [{edition_str}] {section_name}: {len(items)} items, {len(nuevos)} nuevos")
+        time.sleep(SECTION_DELAY)
+    return all_items
 
 
 def scrape_edition_all_sections(
@@ -508,8 +529,9 @@ def process_date(
             found_any = True
 
         # Edicion B del mismo dia: N-B
-        # VERIFICADO: edition=N-B sin v devuelve contenido correctamente
-        items_b = scrape_edition_all_sections(
+        # VERIFICADO: edition=N-B sin v devuelve contenido completo.
+        # No necesita versiones → 1 request por seccion (4 total, no 12-36)
+        items_b = scrape_edition_no_versions(
             session, date_str, b_edition_str, seen_cves, verbose
         )
         save_matches(items_b, date_str, b_edition_str, keywords, data, new_matches, verbose)
