@@ -1,13 +1,7 @@
 {
-  "last_updated": "2026-04-16",
+  "last_updated": null,
   "total": 0,
-  "editions_cache": {
-    "16-04-2026": 44426
-  },
+  "editions_cache": {},
   "publications": [],
-  "skipped_dates": [],
-  "b_edition_days": {
-    "03-08-2025": 44215,
-    "18-01-2026": 44352
-  }
+  "skipped_dates": []
 }
