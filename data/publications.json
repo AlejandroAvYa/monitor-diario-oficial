@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-12",
-  "total": 149,
+  "last_updated": "2026-05-13",
+  "total": 150,
   "editions_cache": {
     "10-02-2025": 44071,
     "11-02-2025": 44072,
@@ -371,7 +371,8 @@
     "07-05-2026": 44443,
     "08-05-2026": 44444,
     "11-05-2026": 44446,
-    "12-05-2026": 44447
+    "12-05-2026": 44447,
+    "13-05-2026": 44448
   },
   "publications": [
     {
@@ -2314,6 +2315,19 @@
       "section": "Publicaciones Judiciales",
       "title": "Tapia - Empresa en RR.HH. e Inherente en Seguridad Privada Rosa Mancilla Mancilla E.I.R.L.",
       "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/04/15/44425/03/2793040.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2809130",
+      "date": "13-05-2026",
+      "edition_id": "44448",
+      "section": "Normas Particulares",
+      "title": "Constitución Cámara Nacional de Seguridad Privada Asociación Gremial",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/05/13/44448/02/2809130.pdf",
       "matched_kw": [
         "seguridad privada"
       ],
