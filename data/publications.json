@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-14",
-  "total": 150,
+  "last_updated": "2026-05-15",
+  "total": 151,
   "editions_cache": {
     "10-02-2025": 44071,
     "11-02-2025": 44072,
@@ -373,7 +373,8 @@
     "11-05-2026": 44446,
     "12-05-2026": 44447,
     "13-05-2026": 44448,
-    "14-05-2026": 44449
+    "14-05-2026": 44449,
+    "15-05-2026": 44450
   },
   "publications": [
     {
@@ -2329,6 +2330,19 @@
       "section": "Normas Particulares",
       "title": "Constitución Cámara Nacional de Seguridad Privada Asociación Gremial",
       "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/05/13/44448/02/2809130.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2808874",
+      "date": "15-05-2026",
+      "edition_id": "44450",
+      "section": "Publicaciones Judiciales",
+      "title": "Lazcano Lazcano Mauricio y otro - Academia de Seguridad Privada Tactical Partners SpA y otro",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/05/15/44450/03/2808874.pdf",
       "matched_kw": [
         "seguridad privada"
       ],
