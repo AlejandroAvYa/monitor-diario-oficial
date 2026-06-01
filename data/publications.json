@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-29",
-  "total": 151,
+  "last_updated": "2026-06-01",
+  "total": 154,
   "editions_cache": {
     "10-02-2025": 44071,
     "11-02-2025": 44072,
@@ -383,7 +383,8 @@
     "26-05-2026": 44458,
     "27-05-2026": 44459,
     "28-05-2026": 44460,
-    "29-05-2026": 44461
+    "29-05-2026": 44461,
+    "01-06-2026": 44463
   },
   "publications": [
     {
@@ -2352,6 +2353,45 @@
       "section": "Publicaciones Judiciales",
       "title": "Lazcano Lazcano Mauricio y otro - Academia de Seguridad Privada Tactical Partners SpA y otro",
       "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/05/15/44450/03/2808874.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2814661",
+      "date": "01-06-2026",
+      "edition_id": "44463",
+      "section": "Publicaciones Judiciales",
+      "title": "Ramírez - Sebastián Erwin Iraira Fica Servicios Integrales de Seguridad Privada E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/01/44463/03/2814661.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2813189",
+      "date": "01-06-2026",
+      "edition_id": "44463",
+      "section": "Publicaciones Judiciales",
+      "title": "Rodríguez Migueletto Alberto Felipe - Servicios de Seguridad Privada Black Man Security Limitada y otras",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/01/44463/03/2813189.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2811390",
+      "date": "01-06-2026",
+      "edition_id": "44463",
+      "section": "Publicaciones Judiciales",
+      "title": "Tapia León Nicolas - Empresa en RR.HH. e Inherente en Seguridad Privada Rosa Mancilla Mancilla E.I.R.L.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/01/44463/03/2811390.pdf",
       "matched_kw": [
         "seguridad privada"
       ],
