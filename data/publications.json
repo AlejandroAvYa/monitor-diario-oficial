@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-12",
-  "total": 154,
+  "last_updated": "2026-06-15",
+  "total": 157,
   "editions_cache": {
     "10-02-2025": 44071,
     "11-02-2025": 44072,
@@ -393,7 +393,8 @@
     "09-06-2026": 44470,
     "10-06-2026": 44471,
     "11-06-2026": 44472,
-    "12-06-2026": 44473
+    "12-06-2026": 44473,
+    "15-06-2026": 44475
   },
   "publications": [
     {
@@ -2401,6 +2402,45 @@
       "section": "Publicaciones Judiciales",
       "title": "Tapia León Nicolas - Empresa en RR.HH. e Inherente en Seguridad Privada Rosa Mancilla Mancilla E.I.R.L.",
       "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/01/44463/03/2811390.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2821909",
+      "date": "15-06-2026",
+      "edition_id": "44475",
+      "section": "Publicaciones Judiciales",
+      "title": "Delgado - Mamba Servicios de Seguridad Privada Ltda.",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/15/44475/03/2821909.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2817284",
+      "date": "15-06-2026",
+      "edition_id": "44475",
+      "section": "Publicaciones Judiciales",
+      "title": "Guerrero - Seguridad Privada Preventiva SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/15/44475/03/2817284.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2820648",
+      "date": "15-06-2026",
+      "edition_id": "44475",
+      "section": "Publicaciones Judiciales",
+      "title": "Rojas - Santa Olga Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/15/44475/03/2820648.pdf",
       "matched_kw": [
         "seguridad privada"
       ],
