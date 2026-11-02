@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-30",
-  "total": 157,
+  "last_updated": "2026-11-02",
+  "total": 161,
   "editions_cache": {
     "10-02-2025": 44071,
     "11-02-2025": 44072,
@@ -397,7 +397,8 @@
     "15-06-2026": 44475,
     "16-06-2026": 44476,
     "17-06-2026": 44477,
-    "18-06-2026": 44478
+    "18-06-2026": 44478,
+    "02-11-2026": 44588
   },
   "publications": [
     {
@@ -2446,6 +2447,59 @@
       "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/06/15/44475/03/2820648.pdf",
       "matched_kw": [
         "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2892699",
+      "date": "02-11-2026",
+      "edition_id": "44588",
+      "section": "Publicaciones Judiciales",
+      "title": "Banco del Estado de Chile - Empresa de Seguridad Privada Serprotal SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/11/02/44588/03/2892699.pdf",
+      "matched_kw": [
+        "seguridad privada",
+        "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2884766",
+      "date": "02-11-2026",
+      "edition_id": "44588",
+      "section": "Publicaciones Judiciales",
+      "title": "Bastías Aracena Patricio Enrique - Servicios en Seguridad Privada M&M SpA y otra",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/11/02/44588/03/2884766.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2889572",
+      "date": "02-11-2026",
+      "edition_id": "44588",
+      "section": "Publicaciones Judiciales",
+      "title": "Raihuanque - Escorpión Seguridad Privada SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/11/02/44588/03/2889572.pdf",
+      "matched_kw": [
+        "seguridad privada"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2891551",
+      "date": "02-11-2026",
+      "edition_id": "44588",
+      "section": "Publicaciones Judiciales",
+      "title": "Rodríguez Pérez Cherie Angélica - Empresa de Seguridad Defensa Cobra SpA",
+      "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/11/02/44588/03/2891551.pdf",
+      "matched_kw": [
+        "empresa de seguridad"
       ],
       "priority": "normal",
       "notified": false
