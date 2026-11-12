@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-11-11",
-  "total": 161,
+  "last_updated": "2026-11-12",
+  "total": 164,
   "editions_cache": {
     "10-02-2025": 44071,
     "11-02-2025": 44072,
@@ -403,7 +403,8 @@
     "06-11-2026": 44592,
     "09-11-2026": 44594,
     "10-11-2026": 44595,
-    "11-11-2026": 44596
+    "11-11-2026": 44596,
+    "12-11-2026": 44597
   },
   "publications": [
     {
@@ -2505,6 +2506,45 @@
       "pdf_url": "http://www.diariooficial.interior.gob.cl/publicaciones/2026/11/02/44588/03/2891551.pdf",
       "matched_kw": [
         "empresa de seguridad"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2902656",
+      "date": "12-11-2026",
+      "edition_id": "44597-B",
+      "section": "Normas Generales",
+      "title": "Decreto número 104, de 2026.- Autoriza el otorgamiento de la gratificación especial de operaciones policiales especiales, al personal de Carabineros de Chile que indica",
+      "pdf_url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/11/12/44597-B/01/2902656.pdf",
+      "matched_kw": [
+        "Carabineros de Chile"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2902658",
+      "date": "12-11-2026",
+      "edition_id": "44597-B",
+      "section": "Normas Generales",
+      "title": "Decreto número 106, de 2026.- Prorroga decreto N° 486, de 1993, del Ministerio de Defensa Nacional, y concede autorización para otorgar gratificación especial de riesgo, al personal de Carabineros de Chile que indica",
+      "pdf_url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/11/12/44597-B/01/2902658.pdf",
+      "matched_kw": [
+        "Carabineros de Chile"
+      ],
+      "priority": "normal",
+      "notified": false
+    },
+    {
+      "cve": "2902657",
+      "date": "12-11-2026",
+      "edition_id": "44597-B",
+      "section": "Normas Generales",
+      "title": "Decreto número 112, de 2026.- Modifica decreto N° 41, de 1987, del Ministerio de Defensa Nacional, que aprueba el Reglamento Orgánico de la Policía de Investigaciones de Chile",
+      "pdf_url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/11/12/44597-B/01/2902657.pdf",
+      "matched_kw": [
+        "Policía de Investigaciones"
       ],
       "priority": "normal",
       "notified": false
